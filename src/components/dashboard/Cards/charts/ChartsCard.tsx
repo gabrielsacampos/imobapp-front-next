@@ -1,4 +1,4 @@
-import { BuildingsLineChart } from "./charts/Chart";
+import { BuildingsLineChart } from "./BuildingsChartLine";
 
 export default function ChartCard(){
 	return ( 
