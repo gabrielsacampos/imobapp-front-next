@@ -6,7 +6,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <aside className="w-40 bg-blue-500 p-6">
+    <aside className="w-40 bg-blue-500 p-6 drop-shadow-2xl">
       <nav className="space-y-5">
         <a
           href=""

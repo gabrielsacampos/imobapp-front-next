@@ -1,5 +1,5 @@
 import Footer from "@/components/Footer";
-import MainDashboard from "@/components/Main";
+import MainDashboard from "@/components/Dashboard/MainDashboard";
 import Sidebar from "@/components/Sidebar";
 
 export default function Home() {
