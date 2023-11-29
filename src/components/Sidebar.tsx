@@ -7,7 +7,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <aside className="w-40 bg-blue-500 p-6 drop-shadow-2xl">
+    <aside className="w-40 bg-blue-500 p-6 drop-shadow-2xl h-full">
       <div className="flex justify-center">
         <h1>Imobapp</h1>
       </div>

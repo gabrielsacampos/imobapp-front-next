@@ -1,6 +1,8 @@
 import Footer from "../components/Footer";
-import MainDashboard from "../components/dashboard/MainDashboard";
-import Sidebar from "../components/Sidebar";
+import MainDashboard from "@/components/Dashboard/MainDashboard";
+import Sidebar from "@/components/Sidebar";
+import Main from "./main";
+
 
 export default function Home() {
   return (
@@ -9,7 +11,12 @@ export default function Home() {
         <div className="flex flex-1">
           <Sidebar />
 
+          <Main>
           <MainDashboard />
+          </Main>
+  
+
+
         </div>
         <Footer />
       </div>
