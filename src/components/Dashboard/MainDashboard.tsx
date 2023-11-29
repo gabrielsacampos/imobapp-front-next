@@ -1,4 +1,5 @@
-import ChartLine from "./Chart";
+import {BuildingsLineChart} from "./charts/Chart";
+import ChartCard from "./ChartsCard";
 import TopCards from "./TopCards";
 
 export default function MainDashboard() {
@@ -8,7 +9,7 @@ export default function MainDashboard() {
 
       <TopCards />
 
-      <ChartLine />
+      <ChartCard />
 
       <div className="border mt-5 h-40 rounded-lg p-2 flex justify-between">
         <div className="border rounded-lg w-1/2 m-2">Imóveis disponíveis</div>
