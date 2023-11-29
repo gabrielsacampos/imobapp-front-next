@@ -11,8 +11,10 @@ const leases = [{ value: 100 }, { value: 50 }, { value: 90 }, { value: 120 }];
 
 export default function TopCards() {
   return (
-    <div className="grid h-36 grid-cols-6 gap-3  mt-5 drop-shadow-lg">
-      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center">
+    <div className="grid w-auto gap-3 drop-shadow-lg sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto">
+     
+     
+      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center w-full">
         <p className=" p-2 text-sm flex">
           <ActiveDocsIcon />
           Contratos
@@ -23,7 +25,7 @@ export default function TopCards() {
         </p>
       </div>
 
-      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center">
+      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center w-full">
         <p className="bg-zinc-200 rounded-lg p-2 text-sm flex">
           <DollarIcon />
           Total
@@ -34,7 +36,7 @@ export default function TopCards() {
         </p>
       </div>
 
-      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center">
+      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center w-full">
         <p className="bg-zinc-200 rounded-lg p-2 text-sm flex">
           <TicketIcon />
           Ticket
@@ -45,7 +47,7 @@ export default function TopCards() {
         </p>
       </div>
 
-      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center">
+      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center w-full">
         <p className="bg-zinc-200 rounded-lg p-2 text-sm flex">
           <RecycleIcon />
           Renovações
@@ -55,7 +57,7 @@ export default function TopCards() {
         </p>
       </div>
 
-      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center">
+      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center w-full">
         <p className="bg-zinc-200 rounded-lg p-2 text-sm flex">
           <ToolIcon />
           Reajustes
@@ -66,7 +68,7 @@ export default function TopCards() {
         </p>
       </div>
 
-      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center">
+      <div className="bg-zinc-200 rounded-lg p-2 text-sm grid grid-cols-1 justify-items-center w-full">
         <p className="bg-zinc-200 rounded-lg p-2 text-sm flex">
           <DangerIcon />
           Inadimplência
