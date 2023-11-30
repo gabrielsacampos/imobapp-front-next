@@ -6,6 +6,19 @@ import {
   Scale as ScaleIcon
 } from "lucide-react";
 
+function mostrarTooltip() {
+  const tooltip = document.getElementById("minhaTooltip");
+  tooltip?.classList.remove('hidden');
+  tooltip?.classList.add('block');
+}
+
+function esconderTooltip() {
+  const tooltip = document.getElementById("minhaTooltip");
+  tooltip?.classList.remove('block');
+  tooltip?.classList.add('hidden');
+}
+
+
 export default function Sidebar() {
   return (
     <aside className="w-40 bg-blue-500 p-6 drop-shadow-2xl h-full hidden md:block">
@@ -15,38 +28,32 @@ export default function Sidebar() {
 
       <nav className="mt-5 border-t border-zinc-200 0 mb-5"></nav>
       <nav className="space-y-5">
-        <a
+      <a
           href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 hover:bg-blue-700 shadow-md rounded-lg p-2 border border-current"
+          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 hover:text-blue-500 hover:bg-zinc-100  rounded-lg p-2 "
         >
           <DashboardIcon />
           Overview
         </a>
-        <a
-          href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 rounded-lg p-2 bg-slate-300"
-        >
+
+        <div className="flex items-center gap-2 text-xs font-semibold text-zinc-100 rounded-lg p-2 bg-slate-300">
           <BuildingIcon />
           Imóveis
-        </a>
-        <a
-          href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100  rounded-lg p-2 bg-slate-300"
-        >
+        </div>
+
+        <div className="flex items-center gap-2 text-xs font-semibold text-zinc-100  rounded-lg p-2 bg-slate-300">
           <LeaseIcon />
           Contratos
-        </a>
-        <a
-          href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 rounded-lg p-2 bg-slate-300"
-        >
+        </div>
+        
+        <div className="flex items-center gap-2 text-xs font-semibold text-zinc-100 rounded-lg p-2 bg-slate-300">
           <WalletIcon />
           Financas
-        </a>
+        </div>
 
         <a
           href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100  hover:bg-blue-700 shadow-md rounded-lg p-2 border border-current"
+          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 hover:text-blue-500 hover:bg-zinc-100  rounded-lg p-2 "
         >
           <ScaleIcon />
           Jurídico
