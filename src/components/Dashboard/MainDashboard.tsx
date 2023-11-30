@@ -6,7 +6,7 @@ import TableDemo from "./Cards/BuildingsCard";
 export default function MainDashboard() {
   return (
     <div className="flex flex-col p-6">
-      <TopCards />
+      <TopCards/>
 
       <ChartCard />
 
