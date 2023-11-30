@@ -1,3 +1,6 @@
+'use client'
+
+import useFetch  from "../../../hooks/useFetch";
 import {
   FileInput as ActiveDocsIcon,
   CircleDollarSign as DollarIcon,
@@ -9,7 +12,13 @@ import {
 
 const leases = [{ value: 100 }, { value: 50 }, { value: 90 }, { value: 120 }];
 
+
+
 export default function TopCards() {
+
+  const { data } = useFetch<any>();
+  console.log(data)
+
   return (
     <div id="box-top-cards" className="grid  gap-3 drop-shadow-lg sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto justify-center">
      
@@ -26,7 +35,7 @@ export default function TopCards() {
         </div>
 
         <p className=" p-2 text-sm flex  row-start-1 row-end-3 items-center justify-center">
-          <p>$$$</p>
+          <p>{data?.length}</p>
         </p>
       </div>
 
