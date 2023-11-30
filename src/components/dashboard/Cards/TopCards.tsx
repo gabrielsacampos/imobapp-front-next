@@ -11,7 +11,9 @@ const leases = [{ value: 100 }, { value: 50 }, { value: 90 }, { value: 120 }];
 
 export default function TopCards() {
   return (
-    <div className="grid w-auto gap-3 drop-shadow-lg sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto">
+    <div key="box-top-cards" className="grid  gap-3 drop-shadow-lg sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto justify-center">
+     
+     
       <div className="bg-zinc-200 rounded-lg  text-sm grid grid-cols-2  w-36 pl-1">
         <div className=" p-2  col-start-1 col-end-2 self-center flex w-full justify-start">
           <p className="justify-start text-xs">
