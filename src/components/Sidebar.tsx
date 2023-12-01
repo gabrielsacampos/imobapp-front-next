@@ -1,57 +1,40 @@
-import {
-  LayoutDashboard as DashboardIcon,
-  Building2 as BuildingIcon,
-  ScrollText as LeaseIcon,
-  Wallet2 as WalletIcon,
-  Scale as ScaleIcon,
-} from "lucide-react";
+import { SidebarItem, SIDEBAR_ITEMS } from "@/constants/SIDEBAR_ITEMS";
 
+const style = (item: SidebarItem) => {
+  if (item.unabled) {
+    return (
+      <div className="flex items-center gap-2 text-xs font-semibold hover:bg-slate-500 hover:text-gray-400 hover:opacity-60 w-full rounded-lg p-2 text-indigo-400 opacity-30">
+        {item.icon}
+        <div>{item.lable}</div>
+      </div>
+    );
+  }
+
+  return (
+    <nav className="space-y-5">
+      <a
+        key={item.lable}
+        href={item.path}
+        className="flex items-center gap-2 text-xs font-semibold hover:text-zinc-100 hover:bg-indigo-500 text-indigo-400  w-full rounded-lg p-2 "
+      >
+        <div>{item.icon}</div>
+        <div className="right-0 flex">{item.lable}</div>
+      </a>
+    </nav>
+  );
+};
 
 export default function Sidebar() {
   return (
-    <aside className="w-40 bg-gray-800  p-6 drop-shadow-2xl h-full hidden md:block">
-      <div className="flex justify-center">
-        <h1 className="text-zinc-200">Imobapp &#128640;</h1>
-      </div>
+    <aside className="w- bg-gray-800  p-6 drop-shadow-2xl h-full hidden md:block">
+      
 
-      <nav className="mt-5 border-t border-zinc-200 0 mb-5"></nav>
-      <nav className="space-y-5">
-        <a
-          href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 hover:text-indigo-500 hover:bg-zinc-100  rounded-lg p-2 "
-        >
-          <DashboardIcon />
-          Overview
-        </a>
+      {SIDEBAR_ITEMS.map((item) => {
+        return (style(item))
+      })}
 
-        <div className="flex items-center gap-2 text-xs font-semibold text-zinc-100 rounded-lg p-2 bg-slate-300">
-          <BuildingIcon />
-          Imóveis
-        </div>
-
-        <div className="flex items-center gap-2 text-xs font-semibold text-zinc-100  rounded-lg p-2 bg-slate-300">
-          <LeaseIcon />
-          Contratos
-        </div>
-
-        <div className="flex items-center gap-2 text-xs font-semibold text-zinc-100 rounded-lg p-2 bg-slate-300">
-          <WalletIcon />
-          Financas
-        </div>
-
-        <a
-          href=""
-          className="flex items-center gap-2 text-xs font-semibold text-zinc-100 hover:text-indigo-500 hover:bg-zinc-100  rounded-lg p-2 "
-        >
-          <ScaleIcon />
-          Jurídico
-        </a>
-      </nav>
-
-      <nav className="mt-5 border-t border-zinc-200 "></nav>
-
-      <div className="mt-5 text-xs font-bold bg-red-500 rounded-3xl  flex justify-center">
-        <button className="text-zinc-200">Sair</button>
+      <div className="mt-5 text-xs font-bold border border-red-600 opacity-40 hover:opacity-100 hover:bg-red-800 hover:text-white rounded-3xl  justify-center flex">
+        <div className="text-zinc-200">Sair</div>
       </div>
     </aside>
   );
