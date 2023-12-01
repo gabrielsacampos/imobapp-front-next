@@ -11,7 +11,7 @@ export default function useFetch<T = unknown>() {
 		axios.get(`${process.env.NEXT_PUBLIC_IMOBAPP_URL}/people`, {
 			headers: {
 			  "Authorization":
-				"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsImVtYWlsIjoiZW1haWxUZXN0ZUBnbWFpbC5jb20iLCJuYW1lIjoiSm9uRG9lIiwiaWF0IjoxNzAxMDkyOTY1LCJleHAiOjE3MDM2ODQ5NjV9.fU5wZs9ymnXmAyYLNZCZT3QYlOc71LX6_Kbo-hCt4aE",
+				`Bearer ${process.env.NEXT_PUBLIC_IMOBAPP_SECRET}`
 			},
 		  })
 			.then(response => {

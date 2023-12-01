@@ -9,7 +9,7 @@ import {
 
 export default function Sidebar() {
   return (
-    <aside className="w-40 bg-gradient-to-l from-indigo-600 from-1% to-indigo-400  p-6 drop-shadow-2xl h-full hidden md:block">
+    <aside className="w-40 bg-gray-800  p-6 drop-shadow-2xl h-full hidden md:block">
       <div className="flex justify-center">
         <h1 className="text-zinc-200">Imobapp &#128640;</h1>
       </div>
