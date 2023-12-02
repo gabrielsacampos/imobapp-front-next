@@ -1,7 +1,7 @@
 "use client";
 
 import { HorizontalTab } from "@/components/Tabs/TabHotizontal";
-import { cards } from "@/constants/TOPCARDS_ITEMS";
+import { cards } from "@/constants/TOPCARDS_ITEMS/TOPCARDS_DASH_ITEMS";
 import useFetchDashboard from "../../../hooks/useFetchDashboard";
 
 const leases = [{ value: 100 }, { value: 50 }, { value: 90 }, { value: 120 }];
@@ -15,6 +15,13 @@ interface TopCards {
 
 export default function TopCards() {
   const { data } = useFetchDashboard<any>();
+
+  //contratos ativos
+  //total contratos
+  // ticket medio contrato
+  // renovações
+  // reajustes contratos
+  // inadimplencia
 
   return (
     <>
@@ -41,7 +48,7 @@ export default function TopCards() {
               </div>
 
               <div className="inline-block row-start-2 row-end-3 m-0  ml-2  col-start-1 col-end-2 justify-center mb-2  ">
-                <div className=" text-indigo-50 rounded-full bg-indigo-500 w-7 h-7 p-1">
+                <div className=" flex text-indigo-50 rounded-full bg-indigo-500 w-8 h-8 items-center justify-center">
                   {card.icon}
                 </div>
               </div>

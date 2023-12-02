@@ -5,8 +5,6 @@ import axios from 'axios'
 
 export default function useFetch<T = unknown>() {
 	const [data, setData] = useState<T | null>(null)
-
-
 	useEffect(() => {
 		axios.get(`${process.env.NEXT_PUBLIC_IMOBAPP_URL}/people`, {
 			headers: {

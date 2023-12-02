@@ -21,7 +21,7 @@ export type SidebarItem = {
 export const SIDEBAR_ITEMS: SidebarItem[] = [
 	{
 		unabled: false,
-		lable: 'Overview',
+		lable: 'Geral',
 		icon: <DashboardIcon />,
 		path: "/"
 	},
@@ -29,24 +29,24 @@ export const SIDEBAR_ITEMS: SidebarItem[] = [
 		unabled: true,
 		lable: 'Imóveis',
 		icon: <BuildingIcon />,
-		path: "/"
+		path: "/dashboard/properties"
 	},
 	{
 		unabled: true,
 		lable: 'Contratos',
 		icon: <LeaseIcon />,
-		path: "/"
+		path: "/dashboard/leases"
 	},
 	{
 		unabled: true,
 		lable: 'Finanças',
 		icon: <WalletIcon />,
-		path: "/"
+		path: "/dashboard/finance"
 	},
 	{
 		unabled: false,
 		lable: 'Jurídico',
 		icon: <ScaleIcon />,
-		path: "/"
+		path: "/dashboard/legal"
 	}
 ]
