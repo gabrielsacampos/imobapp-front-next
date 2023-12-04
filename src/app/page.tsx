@@ -1,11 +1,10 @@
+import MainDashboard from "./dashboard/page";
 import "./globals.css";
-import Dashboard from "@/components/dashboard/Dashboard";
 
 export default function Home() {
   return (
-    
       <main>
-        <Dashboard />
+        <MainDashboard />
       </main>
     
   );

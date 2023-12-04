@@ -20,14 +20,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="bg-zinc-950">
+      <body className="bg-zinc-900">
        
           <Sidebar />
 
-          <div className="h-screen relative lg:ml-80">
+          <div className="h-screen relative ml-20 lg:ml-80">
             <Header />
 
-            <div className="py-24 max-w-4xl px-8 mx-auto">
+            <div className="py-24 max-w-7xl px-8 mx-auto">
               {children}
             </div>
 

@@ -1,7 +1,21 @@
+import ChartCard from "@/components/ChartsCard";
+import { TopCards } from "../../components/TopCards";
+import TableDemo from "@/components/AvailablePropsTable";
 
+import {DashboardHeader} from "@/components/SubHeader";
 
-export default function DashboardContent(){
-	return(
-		<h1 className="text-white">Dashboard</h1>
-	)
+export default function MainDashboard() {
+  return (
+    <div className="">
+      <div className="mb-10">
+        <DashboardHeader />
+      </div>
+
+      <TopCards />
+
+      <ChartCard />
+
+      <TableDemo />
+    </div>
+  );
 }

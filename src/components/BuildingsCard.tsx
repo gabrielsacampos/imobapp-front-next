@@ -1,5 +1,5 @@
-import AllLeasesTable from "./tables/AllLeases";
-import AvailablePropsTable from "./tables/AvailablePropsTable";
+import AllLeasesTable from "./AllLeases";
+import AvailablePropsTable from "./AvailablePropsTable";
 
 export default function BuildingsCard() {
   return (

@@ -8,7 +8,7 @@ import {
 } from "lucide-react";
 
 
-interface TopCards {
+interface Card {
 	lable: string;
 	desc: string;
 	icon: JSX.Element;
@@ -16,41 +16,41 @@ interface TopCards {
   }
 
 
-export const cards: TopCards[] = [
+export const cards: Card[] = [
   {
     lable: "Contratos",
     desc: "Ativos",
-    icon: <ActiveDocsIcon />,
+    icon: <ActiveDocsIcon color="gray" size={40}/>,
     value: "some",
   },
   {
     lable: "Total",
     desc: "Contratos",
-    icon: <DollarIcon />,
+    icon: <DollarIcon  color="gray" size={40}/>,
     value: "some",
   },
   {
     lable: "Ticket",
     desc: "Médio",
-    icon: <TicketIcon />,
+    icon: <TicketIcon  color="gray" size={40}/>,
     value: "some",
   },
   {
     lable: "Renovações",
     desc: "Mês",
-    icon: <RecycleIcon />,
+    icon: <RecycleIcon  color="gray" size={40}/>,
     value: "some",
   },
   {
     lable: "Reajustes",
     desc: "Mês",
-    icon: <ToolIcon />,
+    icon: <ToolIcon  color="gray" size={40}/>,
     value: "some",
   },
   {
     lable: "Inadimplência",
     desc: "+45 dias",
-    icon: <DangerIcon />,
+    icon: <DangerIcon  color="gray" size={40}/>,
     value: "some",
   },
 ];
