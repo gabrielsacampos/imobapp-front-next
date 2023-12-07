@@ -78,7 +78,7 @@ const invoices = [
 
 export function TableLeasesToEnd() {
   return (
-    <div className="border border-white/10 rounded-lg py-3 bg-gray-800 w-auto h-auto mb-3 lg:w-1/2">
+    <div className="border border-white/10 rounded-lg py-3 bg-gray-800 w-auto h-auto mb-3 md:w-1/2">
       <div className="flex border border-t-0 border-white/10 gap-5 justify-center">
         <div className="text-zinc-400 font-bold pb-2">
           Contratos perto do fim
@@ -89,7 +89,7 @@ export function TableLeasesToEnd() {
         </div>
       </div>
       <Table className="p-2">
-        <TableCaption>Esses são os únicos imóvies disponíveis</TableCaption>
+        <TableCaption>Esses são os contratos que vecerão em até 60 dias</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="px-1">cod.</TableHead>
