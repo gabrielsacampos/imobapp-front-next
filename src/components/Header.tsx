@@ -10,6 +10,7 @@ export default function Header() {
 
   return (
     <>
+    <Sidebar opened={isMenuOpen} />
       <header
         className={`flex  justify-between items-center bg-gray-800 px-8 py-3 border-b  border-white/10 right-0 left-0 fixed  z-10 ${
           isMenuOpen ? "lg:left-48" : "lg:left-0 transition delay-75"
@@ -20,7 +21,7 @@ export default function Header() {
             className={`transition ease-in-out  text-zinc-500 hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 lg:hidden`}
             onClick={() => setMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ?  <Menu /> : <ChevronsLeft />}
+            {isMenuOpen ? <ChevronsLeft />:  <Menu /> }
           </button>
 
           <div className="mb-2">
@@ -68,7 +69,7 @@ export default function Header() {
         </div>
       </header>
 
-      <Sidebar opened={isMenuOpen} />
+      
     </>
   );
 }

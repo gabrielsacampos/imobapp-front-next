@@ -15,8 +15,8 @@ interface SideBarProps {
 export default function Sidebar({opened}: SideBarProps) {
   
   return (
-    <aside className={`bg-gray-800  drop-shadow-2xl border-r border-white/10 left-0 top-0 bottom-0 w-48 fixed hidden
-      ${opened? 'lg:block':'lg:hidden' }
+    <aside className={`bg-gray-800  drop-shadow-2xl border-r border-white/10 left-0 top-0 bottom-0 w-48 fixed 
+      ${opened? 'block fixed z-10':' hidden lg:block' }
     `}>
 
       <div className="p-3">
