@@ -24,10 +24,10 @@ export default function RootLayout({
        
           <Sidebar />
 
-          <div className="h-screen relative ml-20 lg:ml-80">
+          <div className="h-screen lg:ml-60">
             <Header />
 
-            <div className="py-24 max-w-7xl px-8 mx-auto">
+            <div className="py-24  max-w-7xl px-8 mx-auto">
               {children}
             </div>
 

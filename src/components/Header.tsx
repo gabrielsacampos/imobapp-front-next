@@ -2,7 +2,7 @@ import { Moon, Search, Menu } from "lucide-react";
 
 export default function Header() {
   return (
-      <header className="flex justify-between items-center bg-gray-800 px-8 py-3 border-b border-white/10 fixed right-0 left-0 lg:left-48">
+      <header className="flex justify-between items-center bg-gray-800 px-8 py-3 border-b border-white/10 right-0 left-0 fixed lg:left-48 z-10">
       
     <button className="w-full max-w-xs flex items-center gap-3 text-xs text-zinc-400 bg-white/5 border border-white/10 hover:border-white px-3 h-8 rounded-full transition-colors">
       <Search size={14} />

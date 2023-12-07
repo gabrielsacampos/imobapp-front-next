@@ -25,7 +25,7 @@ export function Card({lable, desc, icon, value}: CardProps) {
 		</header>
 	
 		<div className="item flex h-1/2 items-center justify-center">
-		  <p className="text-3xl font-semibold text-zinc-400">{value}</p>
+		  <p className="text-xl font-semibold text-zinc-400 ">{value}</p>
 		</div>
 	  </div>
 	);

@@ -1,5 +1,5 @@
 import AllLeasesTable from "./AllLeases";
-import AvailablePropsTable from "./AvailablePropsTable";
+import AvailablePropsTable from "./TableAvailableProps";
 
 export default function BuildingsCard() {
   return (
