@@ -1,10 +1,8 @@
-import { Theme } from "@radix-ui/themes";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,17 +19,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="bg-zinc-900">
-      
+        <div className="h-screen">
+          <Header />
 
-          <div className="h-screen">
-            <Header />
-
-            <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48">
-              {children}
-            </div>
-
+          <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48">
+            {children}
           </div>
-       
+        </div>
       </body>
     </html>
   );

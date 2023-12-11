@@ -1,16 +1,16 @@
 "use client";
 
 import {
-  FileInput as ActiveDocsIcon,
   CircleDollarSign as DollarIcon,
   Ticket as TicketIcon,
   Recycle as RecycleIcon,
   Wrench as ToolIcon,
   AlertTriangle as DangerIcon,
+  Gavel as GavelIcon,
+  Clock4 as ClockIcon,
+  ScanEye as ScanEyeIcon,
+  HeartHandshake as HandShakeIcon
 } from "lucide-react";
-import { Card } from "./Card";
-
-import useFetchDashboard from "../hooks/useFetchDashboard";
 
 interface Card {
   lable: string;
@@ -19,7 +19,7 @@ interface Card {
   value: any;
 }
 
-export function TopCards() {
+export function TopCardsLegal() {
   // const { data } = useFetchDashboard<any>();
   const data = {
     topCardsData: {
@@ -36,33 +36,33 @@ export function TopCards() {
 
   const cards: Card[] = [
     {
-      lable: "Contratos",
-      desc: "Ativos",
-      icon: <ActiveDocsIcon color="gray" size={40} />,
+      lable: "Inadimplentes",
+      desc: "+45 dias",
+      icon: <DangerIcon color="gray" size={40} />,
       value: topCardsData.leases_active_total_value,
     },
     {
-      lable: "Total",
+      lable: "Despejo",
       desc: "Contratos",
-      icon: <DollarIcon color="gray" size={40} />,
+      icon: <ClockIcon color="gray" size={40} />,
       value: topCardsData.leases_active_count,
     },
     {
-      lable: "Ticket",
-      desc: "Médio",
-      icon: <TicketIcon color="gray" size={40} />,
+      lable: "Judicializado",
+      desc: "Contratos",
+      icon: <GavelIcon color="gray" size={40} />,
       value: topCardsData.leases_active_ticket,
     },
     {
-      lable: "Renovações",
-      desc: "Mês",
-      icon: <RecycleIcon color="gray" size={40} />,
+      lable: "Monitoramento",
+      desc: "Valor",
+      icon: <ScanEyeIcon color="gray" size={40} />,
       value: topCardsData.leases_count_renew,
     },
     {
-      lable: "Reajustes",
-      desc: "Mês",
-      icon: <ToolIcon color="gray" size={40} />,
+      lable: "Acordo",
+      desc: "Total",
+      icon: <HandShakeIcon color="gray" size={40} />,
       value: topCardsData.leases_count_readjust,
     },
     {
