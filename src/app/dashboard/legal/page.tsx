@@ -24,7 +24,7 @@ export const data = {
   tableCaption: "Isso é só",
 };
 
-export default function LegalDash() {
+export default function LegalDashboard() {
   return (
     <div className="mb-10 ">
       <main>
@@ -36,9 +36,7 @@ export default function LegalDash() {
           <TopCardsLegal />
         </div>
 
-        <Table props={data}>
-          <Tab items={["item", "item", "item"]} />
-        </Table>
+        <Table />
       </main>
     </div>
   );

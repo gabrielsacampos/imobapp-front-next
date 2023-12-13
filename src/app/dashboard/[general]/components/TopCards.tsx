@@ -1,3 +1,6 @@
+import { DashboardContext } from "@/app/contexts/DashboardContext";
+import { BadgeError } from "@/components/BadgeError";
+import { Loader } from "@/components/Loader";
 import {
   FileInput as ActiveDocsIcon,
   CircleDollarSign as DollarIcon,
@@ -6,63 +9,71 @@ import {
   Wrench as ToolIcon,
   AlertTriangle as DangerIcon,
 } from "lucide-react";
-import { Card, CardProps } from "@/components/Card";
+import { useContext } from "react";
 
-import useFetchDashboard from "@/hooks/useFetchDashboard";
-
-const data = {
-  topCardsData: {
-    leases_active_ticket: "2.215,00",
-    leases_active_count: 156,
-    leases_count_readjust: 0,
-    leases_count_renew: 0,
-    leases_active_total_value: "345.598,69",
-    invoices_pending_total_value: "59.353,69",
-  },
+export type TopCardsProps = {
+  leases: {
+    activeCount: number;
+    totalValue: string;
+    ticket: string;
+    renewsCount: number;
+    readjustmentCount: number;
+  };
+  invoices: {
+    totalPending: string;
+  };
 };
 
-const { topCardsData } = data;
-const cards: Card[] = [
-  {
-    lable: "Contratos",
-    desc: "Ativos",
-    icon: <ActiveDocsIcon color="gray" size={40} />,
-    value: topCardsData.leases_active_total_value,
-  },
-  {
-    lable: "Total",
-    desc: "Contratos",
-    icon: <DollarIcon color="gray" size={40} />,
-    value: topCardsData.leases_active_count,
-  },
-  {
-    lable: "Ticket",
-    desc: "Médio",
-    icon: <TicketIcon color="gray" size={40} />,
-    value: topCardsData.leases_active_ticket,
-  },
-  {
-    lable: "Renovações",
-    desc: "Mês",
-    icon: <RecycleIcon color="gray" size={40} />,
-    value: topCardsData.leases_count_renew,
-  },
-  {
-    lable: "Reajustes",
-    desc: "Mês",
-    icon: <ToolIcon color="gray" size={40} />,
-    value: topCardsData.leases_count_readjust,
-  },
-  {
-    lable: "Inadimplência",
-    desc: "+45 dias",
-    icon: <DangerIcon color="gray" size={40} />,
-    value: topCardsData.invoices_pending_total_value,
-  },
-];
+export function TopCards() {
+  const data = useContext(DashboardContext);
 
+  if (!data.topcards) {
+    return (
+      <Loader />
+    );
+  }
 
-export function TopCards(){
+  const { invoices, leases } = data.topcards;
+
+  const cards = [
+    {
+      lable: "Contratos",
+      desc: "Ativos",
+      icon: <ActiveDocsIcon color="gray" size={40} />,
+      value: leases.totalValue,
+    },
+    {
+      lable: "Total",
+      desc: "Contratos",
+      icon: <DollarIcon color="gray" size={40} />,
+      value: leases.activeCount,
+    },
+    {
+      lable: "Ticket",
+      desc: "Médio",
+      icon: <TicketIcon color="gray" size={40} />,
+      value: leases.ticket,
+    },
+    {
+      lable: "Renovações",
+      desc: "Mês",
+      icon: <RecycleIcon color="gray" size={40} />,
+      value: leases.renewsCount,
+    },
+    {
+      lable: "Reajustes",
+      desc: "Mês",
+      icon: <ToolIcon color="gray" size={40} />,
+      value: leases.readjustmentCount,
+    },
+    {
+      lable: "Inadimplência",
+      desc: "+45 dias",
+      icon: <DangerIcon color="gray" size={40} />,
+      value: invoices.totalPending,
+    },
+  ];
+
   return (
     <div className="container py-3 pl-3  justify-between gap-6 flex flex-row">
       {cards.map((item) => {

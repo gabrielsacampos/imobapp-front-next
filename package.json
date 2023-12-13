@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3030 ",
+    "dev:server": "json-server server.json -p 3333 -w -d 10000 --routes routes.json",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -40,6 +41,7 @@
     "autoprefixer": "^10.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.0.3",
+    "json-server": "^0.17.4",
     "postcss": "^8",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"

@@ -1,6 +1,10 @@
 "use client";
 
+import { DashboardContext } from "@/app/contexts/DashboardContext";
+import { BadgeError } from "@/components/BadgeError";
+import { Loader } from "@/components/Loader";
 import { Card, LineChart, Title } from "@tremor/react";
+import { useContext } from "react";
 
 const chartdata = [
   {
@@ -136,54 +140,55 @@ const chartdata = [
 
 const valueFormatter = (number: number) => {
   if (number < 1000) {
-      return number.toString(); 
+    return number.toString();
   } else {
-      return (number / 1000).toFixed(0) + 'k';
+    return (number / 1000).toFixed(0) + "k";
   }
-}
-  
+};
 
-const BuildingsLineChart = () => (
-  <Card className="my-6 w-full">
-    <Title>Recebimento por Empreendimento</Title>
-    <LineChart
-      className="p-0 object-contain"
-      data={chartdata}
-      index="month"
-      categories={[
-        "Comercial",
-        "Eko Home Club",
-        "Itália",
-        "Mediterrannee",
-        "Residencial Maurício de Nassau",
-        "River Place",
-        "Trade Center",
-        "Mont Serrat",
-        "San Marino",
-      ]}
-      colors={[
-        "slate",
-        "stone",
-        "red",
-        "orange",
-        "amber",
-        "blue",
-        "green",
-        "teal",
-        "cyan",
-        "sky",
-        "yellow",
-        "indigo",
-        "violet",
-        "purple",
-        "fuchsia",
-        "pink",
-        "rose",
-      ]}
-      valueFormatter={valueFormatter}
-      yAxisWidth={40}
-    />
-  </Card>
-);
+export const Charts = () => {
+  const data = useContext(DashboardContext);
 
-export default BuildingsLineChart;
+  if (!data.charts) {
+    return (
+      <div className="mt-10">
+        <Loader />
+      </div>
+    );
+  }
+
+  const { buildingsRevenueData } = data.charts;
+
+  return (
+    <Card className="my-6 w-full">
+      <Title>Recebimento por Empreendimento</Title>
+      <LineChart
+        className="p-0 object-contain"
+        data={buildingsRevenueData.groupedToChart}
+        index="month"
+        categories={buildingsRevenueData.buildings}
+        colors={[
+          "slate",
+          "stone",
+          "red",
+          "orange",
+          "amber",
+          "blue",
+          "green",
+          "teal",
+          "cyan",
+          "sky",
+          "yellow",
+          "indigo",
+          "violet",
+          "purple",
+          "fuchsia",
+          "pink",
+          "rose",
+        ]}
+        valueFormatter={valueFormatter}
+        yAxisWidth={40}
+      />
+    </Card>
+  );
+};

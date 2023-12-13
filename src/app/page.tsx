@@ -1,11 +1,11 @@
-import MainDashboard from "./dashboard/[general]/page";
+import LegalDashboard from "./dashboard/legal/page";
+import { GeneralDashboard } from "./dashboard/[general]/page";
 import "./globals.css";
 
 export default function Home() {
   return (
-      <main>
-        <MainDashboard />
-      </main>
-    
+    <>
+      <GeneralDashboard />
+    </>
   );
 }

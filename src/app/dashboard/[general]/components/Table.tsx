@@ -19,77 +19,67 @@ import {
   TableRow,
   Title,
 } from "@tremor/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { TableTab } from "./TableTab";
-
-type TableProps = {
-  props: {
-    title: string;
-    headers: string[];
-    rows: [][];
-  };
-  children?: JSX.Element;
-};
+import { DashboardContext } from "@/app/contexts/DashboardContext";
+import { Loader } from "@/components/Loader";
 
 export function Table() {
-  const availableProps = availablePropsMock;
-  const endingLeases = leasesToEnd;
-
-  const tabsList = [availableProps, endingLeases];
-
+  const data = useContext(DashboardContext);
   const [selectedTab, setSelectTab] = useState(0);
 
+  if (!data.tables) {
+    return (
+      <div className="mt-10">
+        <Loader />
+      </div>
+    );
+  }
+
+  const { availableProperties, leasesToEnd } = data.tables;
+  const tabsList = [availableProperties, leasesToEnd];
   const { title, headers, rows } = tabsList[selectedTab];
 
+  function handleSelectedTab(event: React.MouseEvent<HTMLButtonElement>) {
+    setSelectTab(Number(event.currentTarget.value));
+  }
 
-  
+  console.log();
 
   return (
-    <Card className="mb-3">
-      <TabGroup className="mb-5">
-        <TabList>
-          <Tab
-            icon={BuildingsIcon}
-            onClick={() => setSelectTab(0)}
-          >
-            Imóveis Disponíveis
-          </Tab>
-          <Tab 
-          icon={LeaseEndingIcon}
-            onClick={() => setSelectTab(1)}
-          >
-            Contratos perto do fim (60 dias)
-          </Tab>
-        </TabList>
-      </TabGroup>
+    <>
+      <Card className="mb-3">
+        <TabGroup className="mb-5">
+          <TabList>
+            <Tab value={0} icon={BuildingsIcon} onClick={handleSelectedTab}>
+              Imóveis Disponíveis
+            </Tab>
+            <Tab value={1} icon={LeaseEndingIcon} onClick={handleSelectedTab}>
+              Contratos perto do fim (60 dias)
+            </Tab>
+          </TabList>
+        </TabGroup>
 
-      <Title className="text-center">{title}</Title>
-      <TableTremor className="mt-5">
-        <TableHead>
-          <TableRow>
+        <Title className="text-center">{title}</Title>
+        <TableTremor className="mt-5">
+          <TableHead>
             {headers.map((header) => {
               return (
-                <TableHeaderCell key={`header-${header}`}>
-                  {header}
-                </TableHeaderCell>
+                <TableRow key={`row-header`}>
+                  <TableHeaderCell key={`header-${header}`}>
+                    {header}
+                  </TableHeaderCell>
+                </TableRow>
               );
             })}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row, index) => {
-            return (
-              <TableRow key={`row-${index}`}>
-                {row.map((item) => (
-                  <>
-                    <TableCell>{item}</TableCell>
-                  </>
-                ))}
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </TableTremor>
-    </Card>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>item</TableCell>
+            </TableRow>
+          </TableBody>
+        </TableTremor>
+      </Card>
+    </>
   );
 }
