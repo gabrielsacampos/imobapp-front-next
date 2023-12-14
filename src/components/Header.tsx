@@ -3,16 +3,17 @@
 import { Moon, Search, Menu, ChevronsLeft } from "lucide-react";
 import { useState } from "react";
 import Logo from "./Logo";
+import { RigthBar } from "./RigthBar";
 import Sidebar from "./Sidebar";
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(true);
 
   return (
-    <>
-    <Sidebar opened={isMenuOpen} />
+    <div className="justify-end flex">
+      <Sidebar opened={isMenuOpen} />
       <header
-        className={`flex  justify-between items-center bg-gray-800 px-8 py-3 border-b  border-white/10 right-0 left-0 fixed  z-10 ${
+        className={`flex  justify-between items-center bg-gray-800 px-8 py-3 border-b  border-white/10 right-0 left-0 fixed  z-10 h-14 ${
           isMenuOpen ? "lg:left-48" : "lg:left-0 transition delay-75"
         }`}
       >
@@ -21,7 +22,7 @@ export default function Header() {
             className={`transition ease-in-out  text-zinc-500 hover:-translate-y-1 hover:scale-110 hover:text-indigo-500 lg:hidden`}
             onClick={() => setMenuOpen(!isMenuOpen)}
           >
-            {isMenuOpen ? <ChevronsLeft />:  <Menu /> }
+            {isMenuOpen ? <ChevronsLeft /> : <Menu />}
           </button>
 
           <div className="mb-2">
@@ -31,7 +32,7 @@ export default function Header() {
 
         <div className="flex items-center">
           <nav className="text-sm hidden items-center gap-6 lg:flex">
-            <a
+            {/* <a
               className="text-zinc-500 hover:text-zinc-100 transition-colors"
               href=""
             >
@@ -44,13 +45,13 @@ export default function Header() {
             >
               {" "}
               tool2{" "}
-            </a>
+            </a> */}
             <a
               className="text-zinc-500 hover:text-zinc-100 transition-colors"
               href=""
             >
               {" "}
-              tool3{" "}
+              Contabilidade{" "}
             </a>
           </nav>
 
@@ -69,7 +70,7 @@ export default function Header() {
         </div>
       </header>
 
-      
-    </>
+      <RigthBar />
+    </div>
   );
 }

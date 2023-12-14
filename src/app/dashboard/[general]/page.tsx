@@ -37,7 +37,7 @@ export function GeneralDashboard() {
   }
 
   return (
-    <div className="mb-10 ">
+    <div className="mb-10">
       <main>
         <div className="mb-10 ">
           <DashboardHeader subtitle={homeSubtitle} />
