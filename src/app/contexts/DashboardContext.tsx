@@ -1,15 +1,6 @@
 "use client";
 import { createContext, ReactNode, useEffect, useState } from "react";
-
-import axios from "axios";
-
-const dashboard = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_IMOBAPP_URL}/dashboard`,
-  timeout: 10000,
-  headers: {
-    Authorization: `Bearer ${process.env.NEXT_PUBLIC_IMOBAPP_SECRET}`,
-  },
-});
+import { api } from "../../lib/axios";
 
 interface DashboardContextType extends DashboardDataProps {}
 
@@ -56,29 +47,33 @@ export type ChartsDataProps = {
   };
 };
 
-export const DashboardContext = createContext({} as DashboardContextType);
+// export const DashboardContext = createContext({} as DashboardContextType);
 
-export function DashboardProvider({ children }: DashboardProviderProps) {
-  const [isLoading, setLoading] = useState(true);
-  const [dashboardData, setDashboardData] = useState<DashboardDataProps>(
-    {} as DashboardDataProps
-  );
+// export function DashboardProvider({ children }: DashboardProviderProps) {
+//   const [isLoading, setLoading] = useState(true);
+//   const [dashboardData, setDashboardData] = useState<DashboardDataProps>(
+//     {} as DashboardDataProps
+//   );
 
-  useEffect(() => {
-    dashboard
-      .get("")
-      .then((response) => {
-        setDashboardData(response.data);
-        setLoading(false)
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }, [isLoading]);
+//   useEffect(() => {
+//     api
+//       .get("/dashboard")
+//       .then((response) => {
+//         setDashboardData(response.data);
+//         setLoading(false);
 
-  return (
-    <DashboardContext.Provider value={dashboardData}>
-      {children}
-    </DashboardContext.Provider>
-  );
-}
+//         console.log("executou useEffect");
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });
+//   }, [isLoading]);
+
+//   console.log(dashboardData);
+
+//   return (
+//     <DashboardContext.Provider value={dashboardData}>
+//       {children}
+//     </DashboardContext.Provider>
+//   );
+// }

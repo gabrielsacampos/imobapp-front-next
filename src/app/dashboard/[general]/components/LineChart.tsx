@@ -147,17 +147,8 @@ const valueFormatter = (number: number) => {
 };
 
 export const Charts = () => {
-  const data = useContext(DashboardContext);
-
-  if (!data.charts) {
-    return (
-      <div className="mt-10">
-        <Loader />
-      </div>
-    );
-  }
-
-  const { buildingsRevenueData } = data.charts;
+  const {charts} = useContext(DashboardContext);
+  const { buildingsRevenueData } = charts;
 
   return (
     <Card className="my-6 w-full">

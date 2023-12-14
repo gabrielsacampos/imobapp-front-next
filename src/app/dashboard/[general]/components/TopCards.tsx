@@ -1,6 +1,6 @@
-import { DashboardContext } from "@/app/contexts/DashboardContext";
 import { BadgeError } from "@/components/BadgeError";
 import { Loader } from "@/components/Loader";
+import { api } from "../../../../lib/axios";
 import {
   FileInput as ActiveDocsIcon,
   CircleDollarSign as DollarIcon,
@@ -10,37 +10,41 @@ import {
   AlertTriangle as DangerIcon,
 } from "lucide-react";
 import { useContext } from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import { priceFormatter } from "@/utils/formatter";
 
 export type TopCardsProps = {
   leases: {
     activeCount: number;
-    totalValue: string;
-    ticket: string;
+    totalValue: number;
+    ticket: number;
     renewsCount: number;
     readjustmentCount: number;
   };
   invoices: {
-    totalPending: string;
+    totalPending: number;
   };
 };
 
 export function TopCards() {
-  const data = useContext(DashboardContext);
+  const { data, error, isLoading } = useQuery<TopCardsProps>({
+    queryKey: ["topcards-general"],
+    queryFn: () => api.get("/dashboard/topcards").then((r) => r.data),
+  });
 
-  if (!data.topcards) {
-    return (
-      <Loader />
-    );
+  if (isLoading) {
+    return <Loader />;
   }
 
-  const { invoices, leases } = data.topcards;
+  const { invoices, leases } = data!;
 
   const cards = [
     {
       lable: "Contratos",
       desc: "Ativos",
       icon: <ActiveDocsIcon color="gray" size={40} />,
-      value: leases.totalValue,
+      value: priceFormatter.format(leases.totalValue),
     },
     {
       lable: "Total",
@@ -52,7 +56,7 @@ export function TopCards() {
       lable: "Ticket",
       desc: "Médio",
       icon: <TicketIcon color="gray" size={40} />,
-      value: leases.ticket,
+      value: priceFormatter.format(leases.ticket),
     },
     {
       lable: "Renovações",
@@ -70,7 +74,7 @@ export function TopCards() {
       lable: "Inadimplência",
       desc: "+45 dias",
       icon: <DangerIcon color="gray" size={40} />,
-      value: invoices.totalPending,
+      value: priceFormatter.format(invoices.totalPending),
     },
   ];
 
@@ -94,7 +98,7 @@ export function TopCards() {
             </header>
 
             <div className="item flex h-1/2 items-center justify-center">
-              <p className="text-xl font-semibold text-zinc-400 ">
+              <p className="text-lg font-semibold text-zinc-400 ">
                 {item.value}
               </p>
             </div>

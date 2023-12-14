@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import Header from "@/components/Header";
+import { Providers } from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +24,7 @@ export default function RootLayout({
           <Header />
 
           <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48">
-            {children}
+            <Providers>{children}</Providers>
           </div>
         </div>
       </body>

@@ -1,7 +1,7 @@
 "use client";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Tab } from "@/components/Tab";
-import { Table } from "@/app/dashboard/[general]/components/Table";
+import { Table } from "@/app/dashboard/[general]/components/TableLeasesToEnd";
 
 import { TopCardsLegal } from "./components/TopCards";
 

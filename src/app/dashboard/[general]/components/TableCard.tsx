@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Table } from "./Table";
+import { Table } from "./TableLeasesToEnd";
 import { TableTab } from "./TableTab";
 
 
