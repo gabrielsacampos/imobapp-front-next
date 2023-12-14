@@ -8,8 +8,8 @@ export function TableTab(){
 	return(
 		<TabGroup className="mb-5">
 			<TabList>
-				<Tab icon={BuildingsIcon}>Imóveis Disponíveis</Tab>
-				<Tab icon={LeaseEndingIcon}>Contratos perto do fim (60 dias)</Tab>
+				<Tab value="availableProperties" icon={BuildingsIcon}>Imóveis Disponíveis</Tab>
+				<Tab value="leasesToEnd" icon={LeaseEndingIcon}>Contratos perto do fim (60 dias)</Tab>
 			</TabList>
 		</TabGroup>
 	)

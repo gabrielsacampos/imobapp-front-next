@@ -6,14 +6,8 @@ import {
   flexRender,
   createColumnHelper,
   getCoreRowModel,
-  ColumnDef,
 } from "@tanstack/react-table";
 
-import {
-  Building2 as BuildingsIcon,
-  FileOutput as LeaseEndingIcon,
-} from "lucide-react";
-import { TabList, Tab, TabPanel, TabGroup, Flex } from "@tremor/react";
 import {
   Card,
   Table as TableTremor,
@@ -28,32 +22,18 @@ import {
 import { Loader } from "@/components/Loader";
 import { api } from "@/lib/axios";
 import { BadgeError } from "@/components/BadgeError";
-import { useLayoutEffect, useState } from "react";
 
-export type LeasesToEndProps = {
-  code: string;
-  end: string;
-  value: number;
+export type AvailablePropertiesProps = {
   building: string;
   unity: string;
   block: string;
+  rooms: number;
+  rentalValue: number;
 };
 
 const columnHelper = createColumnHelper();
 
 const columns = [
-  columnHelper.accessor("code", {
-    header: "código",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("end", {
-    header: "Encerramento",
-    cell: (info) => info.getValue(),
-  }),
-  columnHelper.accessor("value", {
-    header: "Valor",
-    cell: (info) => info.getValue(),
-  }),
   columnHelper.accessor("building", {
     header: "Empreedimento",
     cell: (info) => info.getValue(),
@@ -66,15 +46,24 @@ const columns = [
     header: "Bloco/Torre",
     cell: (info) => info.getValue(),
   }),
+
+  columnHelper.accessor("rooms", {
+    header: "Quartos",
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("rentalValue", {
+    header: "Valor de Aluguel",
+    cell: (info) => info.getValue(),
+  }),
 ];
 
-export function TableLeasesToEnd() {
+export function TableAvailableProperties() {
   const { data, error, isLoading } = useQuery({
     queryKey: ["tables-general"],
     queryFn: () =>
       api.get("/dashboard/tables").then((r) => {
-        const { leasesToEnd } = r.data;
-        return leasesToEnd;
+        const { availableProperties } = r.data;
+        return availableProperties;
       }),
   });
 

@@ -3,13 +3,39 @@
 import { Charts } from "@/app/dashboard/[general]/components/LineChart";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Loader } from "@/components/Loader";
-import { useContext } from "react";
+import { TableAvailableProps } from "@/components/TableAvailableProps";
+import { useContext, useEffect, useState } from "react";
+import { TableAvailableProperties } from "./components/TableAvailableProperties";
+import { TableCard } from "./components/TableCard";
 import { TableLeasesToEnd } from "./components/TableLeasesToEnd";
+import { TableTab } from "./components/TableTab";
 import { TopCards } from "./components/TopCards";
+import { TabList, Tab, TabPanel, TabGroup, Flex } from "@tremor/react";
+import {
+  Building2 as BuildingsIcon,
+  FileOutput as LeaseEndingIcon,
+} from "lucide-react";
 
 const homeSubtitle = "Aqui você tem uma visão geral do negócio.";
 
 export function GeneralDashboard() {
+  const [selectedTableTab, setSelectedTableTab] = useState(
+    "availableProperties"
+  );
+
+  function handleTabClick(tableRef: string) {
+    setSelectedTableTab(tableRef);
+  }
+
+  function setCurrentTable() {
+    switch (selectedTableTab) {
+      case "availableProperties":
+        return <TableAvailableProperties />;
+      case "leasesToEnd":
+        return <TableLeasesToEnd />;
+    }
+  }
+
   return (
     <div className="mb-10 ">
       <main>
@@ -30,7 +56,23 @@ export function GeneralDashboard() {
           </div>
 
           <div className="items-center justify-center">
-            <TableLeasesToEnd />
+            <TabGroup className="ml-1">
+              <TabList>
+                <Tab
+                  icon={BuildingsIcon}
+                  onClick={() => handleTabClick("availableProperties")}
+                >
+                  Imóveis Disponíveis
+                </Tab>
+                <Tab
+                  icon={LeaseEndingIcon}
+                  onClick={() => handleTabClick("leasesToEnd")}
+                >
+                  Contratos perto do fim (60 dias)
+                </Tab>
+              </TabList>
+            </TabGroup>
+            {setCurrentTable()}
           </div>
         </div>
       </main>
