@@ -1,6 +1,6 @@
 "use client";
 
-import { Charts } from "@/app/dashboard/[general]/components/LineChart";
+import { BuildingsRevenueChart } from "@/app/dashboard/[general]/components/BuildingsRevenueChart";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Loader } from "@/components/Loader";
 import { TableAvailableProps } from "@/components/TableAvailableProps";
@@ -47,7 +47,7 @@ export function GeneralDashboard() {
           <TopCards />
         </div>
 
-        {/* <div>{!data ? <Loader /> : <Charts />}</div> */}
+        <BuildingsRevenueChart />
 
         <div>
           <div className="flex justify-center text-zinc-500 mb-3 pb-1  mt-10 border-b border-white/10 ">

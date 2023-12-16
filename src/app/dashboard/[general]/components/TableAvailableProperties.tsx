@@ -28,7 +28,7 @@ export type AvailablePropertiesProps = {
   unity: string;
   block: string;
   rooms: number;
-  rentalValue: number;
+  rental_value: number;
 };
 
 const columnHelper = createColumnHelper();
@@ -51,7 +51,7 @@ const columns = [
     header: "Quartos",
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("rentalValue", {
+  columnHelper.accessor("rental_value", {
     header: "Valor de Aluguel",
     cell: (info) => info.getValue(),
   }),

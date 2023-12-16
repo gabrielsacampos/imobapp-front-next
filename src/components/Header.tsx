@@ -4,6 +4,7 @@ import { Moon, Search, Menu, ChevronsLeft } from "lucide-react";
 import { useState } from "react";
 import Logo from "./Logo";
 import { RigthBar } from "./RigthBar";
+import { SheetDemo } from "./Sheet";
 import Sidebar from "./Sidebar";
 
 export default function Header() {
@@ -51,7 +52,7 @@ export default function Header() {
               href=""
             >
               {" "}
-              Contabilidade{" "}
+              Notas e Fechamento{" "}
             </a>
           </nav>
 
@@ -70,7 +71,7 @@ export default function Header() {
         </div>
       </header>
 
-      <RigthBar />
+      {/* <RigthBar /> */}
     </div>
   );
 }

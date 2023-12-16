@@ -6,14 +6,8 @@ import {
   flexRender,
   createColumnHelper,
   getCoreRowModel,
-  ColumnDef,
 } from "@tanstack/react-table";
 
-import {
-  Building2 as BuildingsIcon,
-  FileOutput as LeaseEndingIcon,
-} from "lucide-react";
-import { TabList, Tab, TabPanel, TabGroup, Flex } from "@tremor/react";
 import {
   Card,
   Table as TableTremor,
@@ -28,29 +22,61 @@ import {
 import { Loader } from "@/components/Loader";
 import { api } from "@/lib/axios";
 import { BadgeError } from "@/components/BadgeError";
-import { useLayoutEffect, useState } from "react";
+
+type BadgeProps = {
+  info: string;
+};
+function Badge({ info }: BadgeProps) {
+  const styleBadge = () => {
+    if (info === "expiring") {
+      return "border-yellow-500 bg-yellow-500/10 text-yellow-400";
+    }
+    if (info === "expired") {
+      return "border-red-500 bg-red-500/10 text-red-400 animate-pulse";
+    }
+  };
+
+  let infoPt: string;
+
+  switch (info) {
+    case "expiring":
+      infoPt = "Encerrando";
+      break
+    case "expired":
+      infoPt = "Encerrado";
+      break
+  }
+
+  return (
+    <div className={`px-2 text-xs border  rounded-md ${styleBadge()} `}>
+      {infoPt!}
+    </div>
+  );
+}
 
 export type LeasesToEndProps = {
   code: string;
-  end: string;
-  value: number;
+  end_at: string;
+  lease_value: number;
   building: string;
   unity: string;
   block: string;
+  tenant_name: string;
+  obs: string;
 };
 
 const columnHelper = createColumnHelper();
 
 const columns = [
   columnHelper.accessor("code", {
-    header: "código",
+    header: "cod.",
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("end", {
+  columnHelper.accessor("end_at", {
     header: "Encerramento",
     cell: (info) => info.getValue(),
   }),
-  columnHelper.accessor("value", {
+  columnHelper.accessor("lease_value", {
     header: "Valor",
     cell: (info) => info.getValue(),
   }),
@@ -63,8 +89,20 @@ const columns = [
     cell: (info) => info.getValue(),
   }),
   columnHelper.accessor("block", {
-    header: "Bloco/Torre",
+    header: "Blc/Torre",
     cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("tenant_name", {
+    header: "Locatário",
+    cell: (info) => info.getValue(),
+  }),
+  columnHelper.accessor("obs", {
+    header: "info",
+    cell: (info) => {
+      const cell = info.getValue();
+      console.log(cell);
+      return <Badge info={cell} />;
+    },
   }),
 ];
 

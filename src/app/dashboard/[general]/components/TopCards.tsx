@@ -16,11 +16,11 @@ import { priceFormatter } from "@/utils/formatter";
 
 export type TopCardsProps = {
   leases: {
-    activeCount: number;
-    totalValue: number;
+    count: number;
+    total: number;
     ticket: number;
-    renewsCount: number;
-    readjustmentCount: number;
+    countRenew: number;
+    countReadjustment: number;
   };
   invoices: {
     totalPending: number;
@@ -37,6 +37,7 @@ export function TopCards() {
     return <Loader />;
   }
 
+  console.log(data);
   const { invoices, leases } = data!;
 
   const cards = [
@@ -44,13 +45,13 @@ export function TopCards() {
       lable: "Contratos",
       desc: "Ativos",
       icon: <ActiveDocsIcon color="gray" size={40} />,
-      value: priceFormatter.format(leases.totalValue),
+      value: priceFormatter.format(leases.total),
     },
     {
       lable: "Total",
       desc: "Contratos",
       icon: <DollarIcon color="gray" size={40} />,
-      value: leases.activeCount,
+      value: leases.count,
     },
     {
       lable: "Ticket",
@@ -62,13 +63,13 @@ export function TopCards() {
       lable: "Renovações",
       desc: "Mês",
       icon: <RecycleIcon color="gray" size={40} />,
-      value: leases.renewsCount,
+      value: leases.countRenew,
     },
     {
       lable: "Reajustes",
       desc: "Mês",
       icon: <ToolIcon color="gray" size={40} />,
-      value: leases.readjustmentCount,
+      value: leases.countReadjustment,
     },
     {
       lable: "Inadimplência",
