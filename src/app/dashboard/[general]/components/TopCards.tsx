@@ -1,37 +1,19 @@
-import { BadgeError } from "@/components/BadgeError";
 import { Loader } from "@/components/Loader";
-import { api } from "../../../../lib/axios";
+import { useTopCards } from "@/hooks/useDashboard";
+import { priceFormatter } from "@/utils/formatter";
 import {
   FileInput as ActiveDocsIcon,
-  CircleDollarSign as DollarIcon,
-  Ticket as TicketIcon,
-  Recycle as RecycleIcon,
-  Wrench as ToolIcon,
   AlertTriangle as DangerIcon,
+  CircleDollarSign as DollarIcon,
+  Recycle as RecycleIcon,
+  Ticket as TicketIcon,
+  Wrench as ToolIcon,
 } from "lucide-react";
-import { useContext } from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { priceFormatter } from "@/utils/formatter";
 
-export type TopCardsProps = {
-  leases: {
-    count: number;
-    total: number;
-    ticket: number;
-    countRenew: number;
-    countReadjustment: number;
-  };
-  invoices: {
-    totalPending: number;
-  };
-};
 
 export function TopCards() {
-  const { data, error, isLoading } = useQuery<TopCardsProps>({
-    queryKey: ["topcards-general"],
-    queryFn: () => api.get("/dashboard/topcards").then((r) => r.data),
-  });
+  const { data, error, isLoading } = useTopCards()
+  
 
   if (isLoading) {
     return <Loader />;

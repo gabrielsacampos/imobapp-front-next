@@ -47,9 +47,9 @@ export function GeneralDashboard() {
           <TopCards />
         </div>
 
-        <BuildingsRevenueChart />
+        {/* <BuildingsRevenueChart /> */}
 
-        <div>
+        {/* <div>
           <div className="flex justify-center text-zinc-500 mb-3 pb-1  mt-10 border-b border-white/10 ">
             Aqui você pode conferir os imóveis disponíveis e os contratos perto
             do fim.
@@ -74,7 +74,7 @@ export function GeneralDashboard() {
             </TabGroup>
             {setCurrentTable()}
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );
