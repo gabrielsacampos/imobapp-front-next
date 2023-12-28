@@ -19,7 +19,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="bg-zinc-900">
+      <body className="bg-zinc-200 dark:bg-zinc-900">
         <div className="h-screen">
           <Header />
 

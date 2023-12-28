@@ -14,7 +14,7 @@ export default function Header() {
     <div className="justify-end flex">
       <Sidebar opened={isMenuOpen} />
       <header
-        className={`flex  justify-between items-center bg-gray-800 px-8 py-3 border-b  border-white/10 right-0 left-0 fixed  z-10 h-14 ${
+        className={`flex  justify-between items-center bg-indigo-600 dark:bg-gray-800 px-8 py-3 border-b border-zinc-800/10 dark:border-white/10 right-0 left-0 fixed  z-10 h-14 ${
           isMenuOpen ? "lg:left-48" : "lg:left-0 transition delay-75"
         }`}
       >
@@ -33,22 +33,8 @@ export default function Header() {
 
         <div className="flex items-center">
           <nav className="text-sm hidden items-center gap-6 lg:flex">
-            {/* <a
-              className="text-zinc-500 hover:text-zinc-100 transition-colors"
-              href=""
-            >
-              {" "}
-              Tool1{" "}
-            </a>
             <a
-              className="text-zinc-500 hover:text-zinc-100 transition-colors"
-              href=""
-            >
-              {" "}
-              tool2{" "}
-            </a> */}
-            <a
-              className="text-zinc-500 hover:text-zinc-100 transition-colors"
+              className="text-zinc-100 dark:text-zinc-500 hover:text-zinc-100 transition-colors"
               href=""
             >
               {" "}
