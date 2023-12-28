@@ -47,7 +47,7 @@ export function GeneralDashboard() {
           <TopCards />
         </div>
 
-        {/* <BuildingsRevenueChart /> */}
+        <BuildingsRevenueChart />
 
         {/* <div>
           <div className="flex justify-center text-zinc-500 mb-3 pb-1  mt-10 border-b border-white/10 ">

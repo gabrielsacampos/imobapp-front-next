@@ -2,7 +2,8 @@
 
 import { BadgeError } from "@/components/BadgeError";
 import { Loader } from "@/components/Loader";
-import { api } from "@/lib/axios";
+import { useCharts } from "@/hooks/useDashboard";
+import { ICharts, api } from "@/lib/axios";
 import { useQuery } from "@tanstack/react-query";
 import { Card, LineChart, Title } from "@tremor/react";
 import { useContext } from "react";
@@ -25,25 +26,22 @@ const valueFormatter = (number: number) => {
 };
 
 export const BuildingsRevenueChart = () => {
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["charts-general"],
-    queryFn: () =>
-      api.get("/dashboard/charts").then((r) => {
-        const { buildingsRevenue } = r.data;
-        return buildingsRevenue;
-      }),
-  });
+  const { data, error, isLoading } = useCharts();
+
+  
 
   if (isLoading) {
     return <Loader />;
   }
 
-  const buildings = data.reduce((acc, curr) => {
+  const {buildings_revenue: buildingsRevenue} = data;
+
+  const buildings = buildingsRevenue.reduce((acc, curr) => {
     acc.includes(curr.building) ? null : acc.push(curr.building);
     return acc;
   }, [] as string[]);
 
-  const groupedData = data.reduce((acc, curr) => {
+  const groupedData = buildingsRevenue.reduce((acc, curr) => {
     const key = curr.payment_month;
     if (acc[key]) {
       acc[key][curr.building] = curr.total
@@ -53,8 +51,6 @@ export const BuildingsRevenueChart = () => {
         [curr.building]: curr.total
       };
     }
-
-    console.log(acc);
     return acc;
   }, [] as any);
 

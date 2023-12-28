@@ -8,7 +8,7 @@ export const api = axios.create({
   },
 });
 
-interface ITopCards {
+export interface ITopCards {
   invoices: {
     total_pending: number;
   }
@@ -18,18 +18,18 @@ interface ITopCards {
     ticket: number;
     count_renew: number;
     count_readjustment: number;
-  }
+  }[]
 }
 
-interface ICharts {
+export interface ICharts {
   buildings_revenue: {
     building: string;
     payment_month: string;
     total: number;
-  }
+  }[]
 }
 
-interface ITables {
+export interface ITables {
   expiring_leases: {
     code: string;
     building: string;
@@ -40,7 +40,7 @@ interface ITables {
     obs: string;
     tenant_name: string;
     end_at: string;
-  }
+  }[]
 }
 
 export async function fetchTopCards(): Promise<ITopCards>{
