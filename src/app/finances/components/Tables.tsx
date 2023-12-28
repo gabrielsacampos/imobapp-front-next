@@ -1,6 +1,6 @@
 import { useTables } from "@/hooks/useDashboard";
 import { Card, Title, TableHead, TableRow, TableHeaderCell, TableBody, TableCell, Text, Table, Button } from "@tremor/react";
-import { Loader, DownloadIcon } from "lucide-react";
+import { Loader, DownloadIcon, Search } from "lucide-react";
 
 
 
@@ -16,10 +16,11 @@ export function TableAvailableProperties(){
     const {available_properties: availableProps} = data!;
     return (
     <Card className="mt-5">
-      <Title className="flex self-center justify-between">Pagamentos para emissão de nota 
+      <Title className="flex self-center justify-between">Notas para emissão 
       <div className="flex gap-2">
       <Button className="h-8">Emitir notas</Button> 
       <Button icon={DownloadIcon} className="h-8 w-3"/>
+      <Button color="slate" icon={Search} className="h-8 w-3"/>
       </div>
         
       </Title>
@@ -31,6 +32,7 @@ export function TableAvailableProperties(){
             <TableHeaderCell>Comissão</TableHeaderCell>
             <TableHeaderCell>Repasse</TableHeaderCell>
             <TableHeaderCell>Retido</TableHeaderCell>
+            <TableHeaderCell></TableHeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -50,6 +52,9 @@ export function TableAvailableProperties(){
               <Text>
               {item.rental_value}
               </Text>
+              </TableCell>
+              <TableCell>
+              <DownloadIcon size={15}/>
               </TableCell>
             </TableRow>
           ))}

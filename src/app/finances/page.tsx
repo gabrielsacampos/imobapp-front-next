@@ -1,23 +1,26 @@
 "use client"
 
-import { Summary } from "./components/Summary"
-import { TableAvailableProperties } from "./components/Tables"
+import Header from "@/components/Header"
+import { Text } from "@tremor/react"
+import { Summary } from "./components/SummaryBody"
+import { NFSBody } from "./components/NFSBody"
 
 
 export default function Page(){
     return (
         <div>
+            <Header />
             <header className="border-b border-zinc-900/30">
-                <h1 className="text-xl font-semibold">Fechamento de mês</h1>
-                <h2 className="text-md italic">Notas fiscais</h2>
+                <Text className="text-xl font-semibold">Fechamento de mês</Text>
+                <Text className="text-md italic">Notas fiscais</Text>
             </header>
         
         <div className="overflow-x-auto">
         <Summary />
         </div>
         
-
-        <TableAvailableProperties />
+        <NFSBody />
+      
         </div>
     
     )
