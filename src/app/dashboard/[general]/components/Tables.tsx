@@ -14,6 +14,8 @@ import {
   Text,
   Title,
 } from "@tremor/react";
+import {BadgeCheckIcon, QuestionMarkCircleIcon, ExclamationIcon} from '@heroicons/react/outline'
+import { useState } from "react";
 
 
 function BadgeInfo({ info }: {info: string}) {
@@ -45,8 +47,7 @@ function BadgeInfo({ info }: {info: string}) {
 }
 
 
-import {BadgeCheckIcon, QuestionMarkCircleIcon} from '@heroicons/react/outline'
-import { useState } from "react";
+
 
 export function TableAvailableProperties(){
   const {data, isLoading, error} = useTables()
@@ -106,7 +107,7 @@ export function TableExpiringLeases(){
 
   return (
   <Card>
-    <Title className="flex self-center gap-3">Contratos perto do fim <Badge color="emerald" icon={BadgeCheckIcon}>{expiringLeases.length}</Badge> </Title>
+    <Title className="flex self-center gap-3">Contratos perto do fim <Badge color="yellow" icon={ExclamationIcon}>{expiringLeases.length}</Badge> </Title>
     <Badge size="xs" icon={QuestionMarkCircleIcon} color="gray"> até 60 dias para o fim</Badge>
     <Table className="mt-5">
       <TableHead>

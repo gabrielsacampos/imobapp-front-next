@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body className="bg-zinc-200 dark:bg-zinc-900">
         <div className="h-screen">
-          <Header />
+          {/* <Header /> */}
 
           <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48">
             <Providers>{children}</Providers>

@@ -8,13 +8,13 @@ import { UserButton } from "@clerk/nextjs";
 
 
 export default function Header() {
-  const [isMenuOpen, setMenuOpen] = useState(true);
+  const [isMenuOpen, setMenuOpen] = useState(false);
 
   return (
     <div className="justify-end flex">
       <Sidebar opened={isMenuOpen} />
       <header
-        className={`flex  justify-between items-center bg-indigo-600 dark:bg-gray-800 px-8 py-3 border-b border-zinc-800/10 dark:border-white/10 right-0 left-0 fixed  z-10 h-14 ${
+        className={`flex  justify-between items-center bg-indigo-600 border-b  dark:bg-gray-800 px-8 py-3 top-0 border-white/10 right-0 left-0 fixed  z-10 h-14 ${
           isMenuOpen ? "lg:left-48" : "lg:left-0 transition delay-75"
         }`}
       >
