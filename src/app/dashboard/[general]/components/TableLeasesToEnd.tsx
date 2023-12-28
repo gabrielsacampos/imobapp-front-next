@@ -22,6 +22,7 @@ import {
 import { Loader } from "@/components/Loader";
 import { api } from "@/lib/axios";
 import { BadgeError } from "@/components/BadgeError";
+import { useTables } from "@/hooks/useDashboard";
 
 type BadgeProps = {
   info: string;
@@ -107,17 +108,11 @@ const columns = [
 ];
 
 export function TableLeasesToEnd() {
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["tables-general"],
-    queryFn: () =>
-      api.get("/dashboard/tables").then((r) => {
-        const { leasesToEnd } = r.data;
-        return leasesToEnd;
-      }),
-  });
-
+  const { data, error, isLoading } = useTables()
+  const {expiring_leases} = data!;
+  
   const table = useReactTable({
-    data,
+    expiring_leases,
     columns,
     getCoreRowModel: getCoreRowModel(),
   });
@@ -126,10 +121,6 @@ export function TableLeasesToEnd() {
     return <Loader />;
   }
 
-  if (error) {
-    const message = `Erro ao carregar dados. Por favor, contate o desenvolvedor - Error messsage: ${error.message}`;
-    return <BadgeError errorMessage={message} />;
-  }
   return (
     <Card>
       <TableTremor>

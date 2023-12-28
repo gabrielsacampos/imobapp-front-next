@@ -1,4 +1,4 @@
-import { TableAvailableProperties } from "@/app/dashboard/[general]/components/TableAvailableProperties";
+import { TableAvailableProperties } from "@/app/dashboard/[general]/components/Tables";
 import {
   Accordion as AccordionShad,
   AccordionContent,

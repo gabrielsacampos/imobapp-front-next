@@ -5,7 +5,7 @@ import { DashboardHeader } from "@/components/DashboardHeader";
 import { Loader } from "@/components/Loader";
 import { TableAvailableProps } from "@/components/TableAvailableProps";
 import { useContext, useEffect, useState } from "react";
-import { TableAvailableProperties } from "./components/TableAvailableProperties";
+import { DashboardTables, TableAvailableProperties, TableExpiringLeases } from "./components/Tables";
 import { TableCard } from "./components/TableCard";
 import { TableLeasesToEnd } from "./components/TableLeasesToEnd";
 import { TableTab } from "./components/TableTab";
@@ -49,32 +49,14 @@ export function GeneralDashboard() {
 
         <BuildingsRevenueChart />
 
-        {/* <div>
+        <div>
           <div className="flex justify-center text-zinc-500 mb-3 pb-1  mt-10 border-b border-white/10 ">
             Aqui você pode conferir os imóveis disponíveis e os contratos perto
             do fim.
           </div>
-
-          <div className="items-center justify-center">
-            <TabGroup className="ml-1">
-              <TabList>
-                <Tab
-                  icon={BuildingsIcon}
-                  onClick={() => handleTabClick("availableProperties")}
-                >
-                  Imóveis Disponíveis
-                </Tab>
-                <Tab
-                  icon={LeaseEndingIcon}
-                  onClick={() => handleTabClick("leasesToEnd")}
-                >
-                  Contratos perto do fim (60 dias)
-                </Tab>
-              </TabList>
-            </TabGroup>
-            {setCurrentTable()}
-          </div>
-        </div> */}
+          
+          <DashboardTables />
+        </div>
       </main>
     </div>
   );

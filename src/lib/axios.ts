@@ -41,19 +41,31 @@ export interface ITables {
     tenant_name: string;
     end_at: string;
   }[]
+  available_properties: {
+    building: string;
+    unity: string;
+    block: string;
+    rooms: number;
+    rental_value: number;
+  }[]
+
 }
 
-export async function fetchTopCards(): Promise<ITopCards>{
-  const {data} = await api.get('/dashboard/topcards')
-  return data;
+class ApiClient {
+  getTopCards(): Promise<ITopCards>{
+    return api.get('/dashboard/topcards').then((res) => res.data)
+    
+  }
+  
+  getCharts(): Promise<ICharts>{
+    return api.get('/dashboard/charts').then((res) => res.data)
+    
+  }
+  
+  getTables(): Promise<ITables>{
+    return api.get('/dashboard/tables').then((res) => res.data)
+  }  
 }
 
-export async function fetchCharts(): Promise<ICharts>{
-  const {data} = await api.get('/dashboard/charts')
-  return data;
-}
+export const apiClient = new ApiClient()
 
-export async function fetchTables(): Promise<ITables>{
-  const {data} = await api.get('/dashboard/tables')
-  return data;
-}

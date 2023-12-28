@@ -1,24 +1,23 @@
-import { fetchCharts, fetchTables, fetchTopCards } from '@/lib/axios'
+import { apiClient } from '@/lib/axios'
 import {useQuery} from '@tanstack/react-query'
-
 
 export function useTopCards(){
     const {data, isLoading, error} = useQuery(
-        { queryKey: ['topcards-data'], queryFn: fetchTopCards }
+        { queryKey: ['topcards-data'], queryFn: apiClient.getTopCards }
     )
     return {data, isLoading, error}
 }
 
 export function useCharts(){
     const {data, isLoading, error} = useQuery(
-        { queryKey: ['charts-data'], queryFn: fetchCharts }
+        { queryKey: ['charts-data'], queryFn: apiClient.getCharts }
     )
     return {data, isLoading, error}
 }
 
 export function useTables(){
     const {data, isLoading, error} = useQuery(
-        { queryKey: ['tables-data'], queryFn: fetchTables }
+        { queryKey: ['tables-data'], queryFn: apiClient.getTables }
     )
     return {data, isLoading, error}
 }

@@ -19,7 +19,6 @@ export function TopCards() {
     return <Loader />;
   }
 
-  console.log(data);
   const { invoices, leases } = data!;
 
   const cards = [

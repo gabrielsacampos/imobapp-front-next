@@ -28,14 +28,12 @@ const valueFormatter = (number: number) => {
 export const BuildingsRevenueChart = () => {
   const { data, error, isLoading } = useCharts();
 
-  
-
   if (isLoading) {
     return <Loader />;
   }
 
-  const {buildings_revenue: buildingsRevenue} = data;
-
+  const {buildings_revenue: buildingsRevenue} = data!;
+  
   const buildings = buildingsRevenue.reduce((acc, curr) => {
     acc.includes(curr.building) ? null : acc.push(curr.building);
     return acc;
