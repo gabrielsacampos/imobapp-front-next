@@ -1,11 +1,11 @@
 "use client";
 
-import { Moon, Search, Menu, ChevronsLeft } from "lucide-react";
+import { ChevronsLeft, Menu, Moon } from "lucide-react";
 import { useState } from "react";
 import Logo from "./Logo";
-import { RigthBar } from "./RigthBar";
-import { SheetDemo } from "./Sheet";
 import Sidebar from "./Sidebar";
+import { UserButton } from "@clerk/nextjs";
+
 
 export default function Header() {
   const [isMenuOpen, setMenuOpen] = useState(true);
@@ -31,33 +31,9 @@ export default function Header() {
           </div>
         </div>
 
-        <div className="flex items-center">
-          <nav className="text-sm hidden items-center gap-6 lg:flex">
-            <a
-              className="text-zinc-100 dark:text-zinc-500 hover:text-zinc-100 transition-colors"
-              href=""
-            >
-              {" "}
-              Notas e Fechamento{" "}
-            </a>
-          </nav>
-
-          <div className="flex items-center pl-6 ml-6 gap-6 border-l">
-            <button className="rounded-full w-8 h-8 flex items-center justify-center hover:bg-zinc-100 transition-colors">
-              <Moon
-                size={14}
-                className="text-zinc-100 hover:text-zinc-900 transition-colors "
-              />
-            </button>
-
-            <button className="border border-red-800 bg-red-400/10 text-red-400 px-3 py-0.5 rounded-full text-sm font-medium hover:border-red-400 transition-colors whitespace-nowrap">
-              Sign Out
-            </button>
-          </div>
-        </div>
+      <UserButton />
       </header>
 
-      {/* <RigthBar /> */}
     </div>
   );
 }

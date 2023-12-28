@@ -4,6 +4,8 @@ import "./globals.css";
 import "@radix-ui/themes/styles.css";
 import Header from "@/components/Header";
 import { Providers } from "./providers";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ptBR } from "@clerk/localizations";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ClerkProvider localization={ptBR}>
     <html lang="en" className={inter.className}>
       <body className="bg-zinc-200 dark:bg-zinc-900">
         <div className="h-screen">
@@ -29,5 +32,6 @@ export default function RootLayout({
         </div>
       </body>
     </html>
+    </ClerkProvider>
   );
 }
