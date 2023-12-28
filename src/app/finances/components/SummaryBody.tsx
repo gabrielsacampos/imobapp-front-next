@@ -1,6 +1,6 @@
 import { RefreshIcon, CheckCircleIcon, CurrencyDollarIcon, ArrowSmRightIcon, ExclamationCircleIcon, TrendingUpIcon } from "@heroicons/react/outline";
 import { Button, Badge, Text, Card, Metric } from "@tremor/react";
-import { NFSCards } from "./NFSCards";
+import { NFSCards } from "./NFSTable";
 import { SummaryCards } from "./SummaryCards";
 
 

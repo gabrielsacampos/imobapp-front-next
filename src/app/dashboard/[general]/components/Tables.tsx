@@ -162,18 +162,6 @@ export function TableExpiringLeases(){
   </Card>)
 }
 
-export function TableTab(){
-	return(
-		<TabGroup className="mb-5">
-			<TabList>
-				<Tab value="availableProperties" icon={BuildingsIcon}>Imóveis Disponíveis</Tab>
-				<Tab value="leasesToEnd" icon={LeaseEndingIcon}>Contratos perto do fim (60 dias)</Tab>
-			</TabList>
-		</TabGroup>
-	)
-}
-
-
 export function DashboardTables(){
   const [selectedTableTab, setSelectedTableTab] = useState(
     "availableProperties"
