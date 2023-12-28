@@ -45,19 +45,19 @@ export function TopCards() {
       lable: "Renovações",
       desc: "Mês",
       icon: <RecycleIcon color="gray" size={40} />,
-      value: leases.countRenew,
+      value: leases.count_renew,
     },
     {
       lable: "Reajustes",
       desc: "Mês",
       icon: <ToolIcon color="gray" size={40} />,
-      value: leases.countReadjustment,
+      value: leases.count_readjustment,
     },
     {
       lable: "Inadimplência",
       desc: "+45 dias",
       icon: <DangerIcon color="gray" size={40} />,
-      value: priceFormatter.format(invoices.totalPending),
+      value: priceFormatter.format(invoices.total_pending),
     },
   ];
 
