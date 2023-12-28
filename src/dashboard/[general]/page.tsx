@@ -1,6 +1,6 @@
 "use client";
 
-import { BuildingsRevenueChart } from "@/app/dashboard/[general]/components/BuildingsRevenueChart";
+import { BuildingsRevenueChart } from "@/dashboard/[general]/components/BuildingsRevenueChart";
 import { DashboardHeader } from "@/components/DashboardHeader";
 import { Loader } from "@/components/Loader";
 import { TableAvailableProps } from "@/components/TableAvailableProps";

@@ -25,37 +25,31 @@ export function TopCards() {
     {
       lable: "Contratos",
       desc: "Ativos",
-      icon: <ActiveDocsIcon color="gray" size={40} />,
       value: priceFormatter.format(leases.total),
     },
     {
       lable: "Total",
       desc: "Contratos",
-      icon: <DollarIcon color="gray" size={40} />,
       value: leases.count,
     },
     {
       lable: "Ticket",
       desc: "Médio",
-      icon: <TicketIcon color="gray" size={40} />,
       value: priceFormatter.format(leases.ticket),
     },
     {
       lable: "Renovações",
       desc: "Mês",
-      icon: <RecycleIcon color="gray" size={40} />,
       value: leases.count_renew,
     },
     {
       lable: "Reajustes",
       desc: "Mês",
-      icon: <ToolIcon color="gray" size={40} />,
       value: leases.count_readjustment,
     },
     {
       lable: "Inadimplência",
       desc: "+45 dias",
-      icon: <DangerIcon color="gray" size={40} />,
       value: priceFormatter.format(invoices.total_pending),
     },
   ];
