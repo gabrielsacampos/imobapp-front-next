@@ -1,5 +1,6 @@
 import { Badge, Card, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, Text, Title } from "@tremor/react"
 import { BadgeCheckIcon, EyeIcon } from "lucide-react";
+import { DialogReport } from "./DialogReport";
 
 
 
@@ -12,7 +13,72 @@ const mock = [
         nfse_number: "123456",
         onlending: "3423",
         recieve: "1234",
-        invoices: []
+        invoices: [
+            {
+                property: "Casa de Praia",
+                payment: "12/12/2021",
+                invoice_id: "1231231sfafa23",
+                items: [
+                    {
+                        name: "Fatura 1",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 2",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 3",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 4",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 5",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                ]
+            },
+            {
+                property: "casa doida",
+                payment: "12/12/2021",
+                invoice_id: "1231231sfafa23",
+                items: [
+                    {
+                        name: "Fatura 1",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 2",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 3",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 4",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                    {
+                        name: "Fatura 5",
+                        value: 1200,
+                        date: "12/12/2021",
+                    },
+                ]
+            }
+        ]
     },
     {
         owner: "Maria Souza",
@@ -22,7 +88,69 @@ const mock = [
         nfse_number: "654321",
         onlending: "3423",
         recieve: "1234",
-        invoices: []
+        invoices: [{
+            property: "Casa de ironia",
+            payment: "12/12/2021",
+            invoice_id: "1231231sfafa23",
+            items: [
+                {
+                    name: "Fatura 1",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 2",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 3",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 4",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 5",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+            ]
+        },{
+            property: "Casa de legal",
+            payment: "12/12/2021",
+            invoice_id: "1231231sfafa23",
+            items: [
+                {
+                    name: "Fatura 1",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 2",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 3",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 4",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 5",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+            ]
+        }]
     },
     {
         owner: "Pedro Santos",
@@ -32,7 +160,38 @@ const mock = [
         nfse_number: "987654",
         onlending: "3423",
         recieve: "1234",
-        invoices: []
+        invoices: [{
+            property: "Casa de Praia",
+            payment: "12/12/2021",
+            invoice_id: "1231231sfafa23",
+            items: [
+                {
+                    name: "Fatura 1",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 2",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 3",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 4",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+                {
+                    name: "Fatura 5",
+                    value: 1200,
+                    date: "12/12/2021",
+                },
+            ]
+        }]
     },
 ]
 
@@ -98,7 +257,7 @@ export function NFSTable(){
                   </TableCell>
                   <TableCell className="flex justify-center">
                   <Text>
-                  <EyeIcon />
+                    <DialogReport invoices={item.invoices}/>
                   </Text>
                   </TableCell>
                 </TableRow>
