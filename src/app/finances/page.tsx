@@ -1,24 +1,40 @@
 "use client"
 
 import Header from "@/components/Header"
-import { Text } from "@tremor/react"
-import { Summary } from "./components/SummaryBody"
-import { NFSBody } from "./components/NFSBody"
-import { DashboardTables } from "../dashboard/[general]/components/Tables"
+import { Heading } from "@radix-ui/themes"
+import { NFSTablesTabs } from "./components/NFSTablesTabs"
+import { TopCards } from "./components/TopCards"
+import { TopInfo } from "./components/TopInfo"
+import { Title } from "@tremor/react"
 
 
 export default function Page(){
     return (
         <div>
             <Header />
-            <header className="border-b border-zinc-900/30">
-                <Text className="text-xl font-semibold">Fechamento de mês</Text>
-                <Text className="text-md italic">Notas fiscais</Text>
-            </header>
-        <div className="overflow-x-auto">
-        <Summary />
-        </div>
-        <NFSBody />
+
+
+            <Title className="text-xl">Fechamento de mês</Title>
+            <Title className="text-xs font-extralight">e emissão de <span className=" border-b dark:border-white/10 border-zinc-900/10">notas fiscais</span></Title>
+            
+            
+
+
+            <div className="mb-10">
+            <TopInfo />
+            </div>
+    
+        
+
+            <Title>Resumo</Title>
+            <div className="mb-10 mt-5">
+                <TopCards />
+            </div>
+            
+        
+        
+            <Title>Notas Fiscais</Title>
+            <NFSTablesTabs />
         </div>
     
     )

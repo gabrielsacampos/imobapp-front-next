@@ -6,7 +6,7 @@ import { NFSTable } from "./NFSTable";
 const mock = [
   {
     key: "sentNfs",
-    lable: "Enviadas",
+    lable: "Pendentes",
     value: 12,
     color: "blue",
     table: <>sent</>,
@@ -22,7 +22,7 @@ const mock = [
   },
   {
     key: "errorNfs",
-    lable: "Com Erro",
+    lable: "Falhas",
     value: 12,
     color: "red",
     table: <>error</>,

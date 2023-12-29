@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import Header from "@/components/Header";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { Theme } from "@radix-ui/themes";
 import { Providers } from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
@@ -27,7 +27,9 @@ export default function RootLayout({
           {/* <Header /> */}
 
           <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48">
+            <Theme>
             <Providers>{children}</Providers>
+            </Theme>
           </div>
         </div>
       </body>

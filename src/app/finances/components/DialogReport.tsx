@@ -1,7 +1,8 @@
 
-import { Button, Dialog, Flex, Inset } from "@radix-ui/themes";
+import { Button, Dialog, Flex, HoverCardContent, HoverCardRoot, HoverCardTrigger, Inset } from "@radix-ui/themes";
 import { EyeIcon, XIcon, DownloadIcon } from "lucide-react";
 import { Strong, Table, TableBody } from '@radix-ui/themes';
+import React, { ReactNode } from "react";
 const mock = [
     {
         property: "Casa de Praia",
@@ -38,13 +39,31 @@ const mock = [
 ]
 
 
+export function Hover(props){
+    return(
+        <HoverCardRoot>
+            <HoverCardTrigger>
+                {props.children}
+            </HoverCardTrigger>
+
+            <HoverCardContent>
+                <p className="text-xs">Verifique relatório detalhado</p>
+            </HoverCardContent>
+        </HoverCardRoot>
+    )
+}
+
+
 export function DialogReport(){
     return(
         <Dialog.Root>
             
+            <Hover>
             <Dialog.Trigger>
-            <Button><EyeIcon /></Button>
+                    <Button variant="soft"><EyeIcon /></Button>
             </Dialog.Trigger>
+            </Hover>
+            
             
             <Dialog.Content>
                 <Flex gap="3" justify="end">

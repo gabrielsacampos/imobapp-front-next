@@ -1,6 +1,7 @@
-import { Badge, Card, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, Text, Title } from "@tremor/react"
-import { BadgeCheckIcon, EyeIcon } from "lucide-react";
+import { Card, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, Text, Title } from "@tremor/react";
 import { DialogReport } from "./DialogReport";
+import { Badge } from "@radix-ui/themes";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 
 
@@ -198,11 +199,11 @@ const mock = [
 export function BadgeStatus({status}: {status: string}){
     switch (status) {
         case "pending":
-            return <Badge color="yellow" className="w-24">Pendente</Badge>
+            return <Badge color="yellow" >Pendente</Badge>
         case "sucefull":
-            return <Badge color="green" className="w-24">Emitida</Badge>
+            return <Badge color="green" >Emitida</Badge>
         case "error":
-            return <Badge color="red" className="w-24 animate-pulse">Erro</Badge>
+            return <Badge color="red" highContrast={true} className="animate-pulse"> <InfoCircledIcon/> Falhou</Badge>
     }
 }
 
