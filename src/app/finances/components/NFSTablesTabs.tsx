@@ -1,4 +1,5 @@
-import { Badge, Color, Tab, TabGroup, TabList } from "@tremor/react";
+import { Color } from "@tremor/react";
+import { Badge, Tabs } from "@radix-ui/themes";
 import { CheckCircleIcon, Send as SendIcon, XCircleIcon } from "lucide-react";
 import { useState } from "react";
 import { NFSTable } from "./NFSTable";
@@ -8,9 +9,9 @@ const mock = [
     key: "sentNfs",
     lable: "Pendentes",
     value: 12,
-    color: "blue",
+    color: "amber",
     table: <>sent</>,
-    icon: SendIcon
+    icon: <SendIcon size={15}/>
   },
   {
     key: "sucefullNfs",
@@ -18,7 +19,7 @@ const mock = [
     value: 12,
     color: "green",
     table: <>done</>,
-    icon: CheckCircleIcon
+    icon: <CheckCircleIcon size={15}/>
   },
   {
     key: "errorNfs",
@@ -26,7 +27,7 @@ const mock = [
     value: 12,
     color: "red",
     table: <>error</>,
-    icon: XCircleIcon
+    icon: <XCircleIcon size={15}/>
   },
 ]
 
@@ -47,23 +48,25 @@ export function NFSTablesTabs(){
 
   return (
     <div className="items-center justify-center mt-2">
-      <TabGroup className="ml-1 flex">
+      <Tabs.Root className="ml-1 flex">
      {mock.map((item, index) => {
       return( 
-        <TabList 
+        <Tabs.List 
           key={item.key}
           color={item.color as Color}
         >
-          <Tab
-            icon={item.icon}
+          <Tabs.Trigger
+          className="flex items-center gap-1"
             onClick={() => handleTabClick(item.key)}
           >
-            {item.lable} <Badge color={selectedTableTab === item.key ? item.color: "gray"}>{item.value}</Badge>
-          </Tab>
-         </TabList>
+           {item.icon}
+           {item.lable} 
+           <Badge color={selectedTableTab === item.key ? item.color: "gray"}>{item.value}</Badge>
+          </Tabs.Trigger>
+         </Tabs.List>
       )
      })}
-     </TabGroup>
+     </Tabs.Root>
       {/* {displaySelectedTable()} */}
       <NFSTable />
     </div>

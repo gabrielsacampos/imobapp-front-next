@@ -228,7 +228,7 @@ export function NFSTable(){
             </TableHead>
             <TableBody>
               {mock.map((item, index) => (
-                <TableRow key={`row-${index}`}>
+                <TableRow key={`row-${index}`} className="hover:bg-zinc-200/10 hover:cursor-pointer">
                   <TableCell>
                     <BadgeStatus status={item.nfse_status} />
                     </TableCell>
@@ -258,7 +258,7 @@ export function NFSTable(){
                   </TableCell>
                   <TableCell className="flex justify-center">
                   <Text>
-                    <DialogReport invoices={item.invoices}/>
+                    <DialogReport />
                   </Text>
                   </TableCell>
                 </TableRow>
