@@ -18,7 +18,7 @@ import {
 
 const homeSubtitle = "Aqui você tem uma visão geral do negócio.";
 
-export function GeneralDashboard() {
+export function Page() {
   const [selectedTableTab, setSelectedTableTab] = useState(
     "availableProperties"
   );

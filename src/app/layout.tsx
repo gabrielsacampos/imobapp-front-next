@@ -26,11 +26,11 @@ export default function RootLayout({
         <div className="h-screen">
           {/* <Header /> */}
 
-          <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48">
+          {/* <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48"> */}
             <Theme>
             <Providers>{children}</Providers>
             </Theme>
-          </div>
+          {/* </div> */}
         </div>
       </body>
     </html>
