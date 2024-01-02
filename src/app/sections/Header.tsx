@@ -13,14 +13,11 @@ export function Header(){
                     <div className="text-lg font-extrabold tracking-tighter text-blue-400">IMOBAPP</div>
                     <div className="ml-2 text-xs text-blue-400 ">⚡️ by Nebulafy</div>
                     </div>
-                    <div className='text-xs'><Badge variant='soft'>Beta <InfoCircledIcon /></Badge></div>
-                
-                </div>
-
+                </div>  
     
             <div className="flex items-center gap-3">
                 <span className="text-sm font-semibold tracking-tighter text-blue-300  hover:border-blue-500/30 hover:border-b  transition-all hover:cursor-pointer">DOCUMENTATION</span>
-                    <div className="mr-5 py-1 px-4 rounded-full border  bg-black hover:bg-blue-700 hover:text-white text-white flex items-center justify-center gap-2 hover:cursor-pointer transition-colors">
+                    <div className="mr-5 py-1 px-4 rounded-full border  hover:bg-black bg-blue-700  text-white flex items-center justify-center gap-2 hover:cursor-pointer transition-colors">
                         <span className='text-xs font-semibold'>source</span><GitHubLogoIcon />
                     </div>
             </div>
