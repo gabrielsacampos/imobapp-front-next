@@ -1,20 +1,11 @@
 "use client";
 
-import { BuildingsRevenueChart } from "@/app/private/dashboard/components/BuildingsRevenueChart";
 import { DashboardHeader } from "@/app/private/components/DashboardHeader";
-import { Loader } from "@/app/private/components/Loader";
-import { TableAvailableProps } from "@/app/private/components/TableAvailableProps";
-import { useContext, useEffect, useState } from "react";
-import { DashboardTables, TableAvailableProperties, TableExpiringLeases } from "./components/Tables";
-import { TableCard } from "./components/TableCard";
+import { BuildingsRevenueChart } from "@/app/private/dashboard/components/BuildingsRevenueChart";
+import { useState } from "react";
 import { TableLeasesToEnd } from "./components/TableLeasesToEnd";
-import { TableTab } from "./components/TableTab";
+import { DashboardTables, TableAvailableProperties } from "./components/Tables";
 import { TopCards } from "./components/TopCards";
-import { TabList, Tab, TabPanel, TabGroup, Flex } from "@tremor/react";
-import {
-  Building2 as BuildingsIcon,
-  FileOutput as LeaseEndingIcon,
-} from "lucide-react";
 
 const homeSubtitle = "Aqui você tem uma visão geral do negócio.";
 

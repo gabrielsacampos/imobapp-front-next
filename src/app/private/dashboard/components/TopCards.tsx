@@ -1,14 +1,6 @@
-import { Loader } from "@/app/private/components/Loader";
+import { CardSkeleton } from "@/app/components/skeletons/CardSkeleton";
 import { useTopCards } from "@/hooks/useDashboard";
 import { priceFormatter } from "@/utils/formatter";
-import {
-  FileInput as ActiveDocsIcon,
-  AlertTriangle as DangerIcon,
-  CircleDollarSign as DollarIcon,
-  Recycle as RecycleIcon,
-  Ticket as TicketIcon,
-  Wrench as ToolIcon,
-} from "lucide-react";
 import { Card } from "@tremor/react";
 
 export function TopCards() {
@@ -16,7 +8,15 @@ export function TopCards() {
   
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="flex justify-center gap-4">
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+        <CardSkeleton />
+      </div>
+    );
   }
 
   const { invoices, leases } = data!;

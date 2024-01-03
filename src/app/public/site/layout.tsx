@@ -8,6 +8,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
 import { Header } from "./components/Header";
 import { Footer } from "./components/Footer";
+import {Sidebar} from "@/app/private/components/Sidebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,17 +27,12 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <div className="h-screen">
-
-          {/* <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48"> */}
             <Theme>
               <Header />
               <Providers>{children}</Providers>
-              
+              <Footer />
             </Theme>
-          {/* </div> */}
-
         </div>
-        <Footer />
       </body>
     </html>
     </ClerkProvider>

@@ -27,16 +27,11 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <div className="h-screen">
-
-          {/* <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48"> */}
             <Theme>
               <Header />
               <NavSideBar />
               <Providers>{children}</Providers>
-              
             </Theme>
-          {/* </div> */}
-
         </div>
         <Footer />
       </body>

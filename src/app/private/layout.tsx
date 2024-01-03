@@ -6,7 +6,8 @@ import { Theme } from "@radix-ui/themes";
 import { Providers } from "../private/providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ptBR } from "@clerk/localizations";
-import { Header } from "./components/Header";
+import {Header} from "./components/Header";
+import { Sidebar } from "./components/Sidebar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,15 +27,15 @@ export default function RootLayout({
     <html lang="en" className={inter.className}>
       <body>
         <div className="h-screen">
-
-          {/* <div className="py-24 max-w-7xl px-8 mx-auto lg:ml-48"> */}
             <Theme>
               <Header />
-              <Providers>{children}</Providers>
-
+              <Sidebar opened={true}/>
+              <div className="ml-64 mt-20 flex justify-center">
+                <main className="w-auto max-w-[1024px]">
+                  <Providers>{children}</Providers>
+                </main>
+              </div>
             </Theme>
-          {/* </div> */}
-
         </div>
       </body>
     </html>

@@ -1,5 +1,6 @@
 "use client";
 
+import { ChartSkeleton } from "@/app/components/skeletons/ChartSkeleton";
 import { BadgeError } from "@/app/private/components/BadgeError";
 import { Loader } from "@/app/private/components/Loader";
 import { useCharts } from "@/hooks/useDashboard";
@@ -29,7 +30,7 @@ export const BuildingsRevenueChart = () => {
   const { data, error, isLoading } = useCharts();
 
   if (isLoading) {
-    return <Loader />;
+    return <ChartSkeleton />;
   }
 
   const {buildings_revenue: buildingsRevenue} = data!;

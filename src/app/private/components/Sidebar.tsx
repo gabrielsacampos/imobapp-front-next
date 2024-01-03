@@ -1,21 +1,67 @@
 'use client'
-
-import {
-  SidebarItem,
-  SIDEBAR_ITEMS,
-} from "@/constants/SIDEBAR_ITEMS/SIDEBAR_ITEMS";
-import { Menu, Search } from "lucide-react";
-import Logo from "./Logo";
+import { Search } from "lucide-react";
 import NavLink from "./NavLink";
+import {
+	LayoutDashboard as DashboardIcon,
+	Building2 as BuildingIcon,
+	ScrollText as LeaseIcon,
+	Wallet2 as WalletIcon,
+	Scale as ScaleIcon,
+	LayoutDashboard,
+  } from "lucide-react";
+
+import { ReactNode } from 'react';
+
+
+export type SidebarItem = {
+	unabled: boolean;
+	lable: string;
+	icon: ReactNode;
+	path: string;
+}
+
+
+export const SIDEBAR_ITEMS: SidebarItem[] = [
+	{
+		unabled: false,
+		lable: 'Geral',
+		icon: <DashboardIcon />,
+		path: ""
+	},
+	{
+		unabled: true,
+		lable: 'Imóveis',
+		icon: <BuildingIcon />,
+		path: "properties"
+	},
+	{
+		unabled: true,
+		lable: 'Contratos',
+		icon: <LeaseIcon />,
+		path: "leases"
+	},
+	{
+		unabled: true,
+		lable: 'Finanças',
+		icon: <WalletIcon />,
+		path: "finance"
+	},
+	{
+		unabled: false,
+		lable: 'Jurídico',
+		icon: <ScaleIcon />,
+		path: "legal"
+	}
+]
 
 interface SideBarProps {
   opened: boolean;
 }
 
-export default function Sidebar({opened}: SideBarProps) {
+export function Sidebar({opened}: SideBarProps) {
   
   return (
-    <aside className={`bg-indigo-600 dark:bg-gray-800  drop-shadow-2xl border-r border-white/10 left-0 top-0 bottom-0 w-48 fixed 
+    <aside className={`bg-indigo-600 dark:bg-gray-800  drop-shadow-2xl border-r border-white/10 left-0 top-14 bottom-0 w-48 fixed 
       ${opened? 'block fixed z-10':' hidden lg:block' }
     `}>
 
@@ -32,7 +78,7 @@ export default function Sidebar({opened}: SideBarProps) {
             <div className="flex flex-col">
               {SIDEBAR_ITEMS.map((item) => {
                 return (
-                  <NavLink key={item.lable} href={item.path}>
+                  <NavLink key={item.lable} href={`/private/dashboard${item.path}`}>
                     {item.lable}
                   </NavLink>
                 );
