@@ -31,7 +31,7 @@ export default function Page() {
     <div className="mb-10">
       <main>
         <div className="mb-10 ">
-          <DashboardHeader subtitle={homeSubtitle} />
+          <DashboardHeader subtitle={homeSubtitle} dashboardPage="Geral"/>
         </div>
 
         <div className=" overflow-x-auto relative">

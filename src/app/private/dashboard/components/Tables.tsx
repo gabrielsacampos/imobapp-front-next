@@ -16,15 +16,16 @@ import {
 } from "@tremor/react";
 import {BadgeCheckIcon, QuestionMarkCircleIcon, ExclamationIcon} from '@heroicons/react/outline'
 import { useState } from "react";
+import { TableSkeleton } from "@/app/components/skeletons/TableSkeleton";
 
 
 function BadgeInfo({ info }: {info: string}) {
   const styleBadge = () => {
     if (info === "expiring") {
-      return "border-yellow-500 bg-yellow-500/10 text-yellow-400";
+      return "border-yellow-500 bg-yellow-500/10 text-yellow-400 w-auto";
     }
     if (info === "expired") {
-      return "border-red-500 bg-red-500/10 text-red-400 animate-pulse";
+      return "border-red-500 bg-red-500/10 text-red-400 animate-pulse w-auto";
     }
   };
 
@@ -53,7 +54,7 @@ export function TableAvailableProperties(){
   const {data, isLoading, error} = useTables()
 
   if(isLoading){
-    return <Loader />
+    return <TableSkeleton />
   }
 
   const {available_properties: availableProps} = data!;

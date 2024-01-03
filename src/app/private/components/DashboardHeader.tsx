@@ -1,6 +1,8 @@
 "use client";
 
+import { DashboardIcon } from "@radix-ui/react-icons";
 import { Badge, Card, Metric, Text } from "@tremor/react";
+import { ChevronRightIcon } from "lucide-react";
 
 
 type DashboardHeaderProps = {
@@ -12,11 +14,19 @@ export function DashboardHeader({dashboardPage, subtitle}: DashboardHeaderProps)
   //trazer description para abaixo do dashboard quando em xs
   
   return (
-    <div>
-      <div className="flex justify-between">
-        <h1 className="font-bold  text-3xl  md:text-5xl text-gray-700 dark:text-white/50">Dashboard</h1>
-        <h3 className=' ml-5 text-2xl font-thin text-white/50  flex self-center'> { dashboardPage ? ` / ${dashboardPage}` : ''}</h3>
-        <div className="flex flex-col sm:flex-row gap-2 mr-5">
+    <div className="flex justify-between">
+      <nav className="flex text-zinc-500" aria-label="Breadcrumb">
+        <ol className="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+          <li className="inline-flex items-center gap-2">
+              <DashboardIcon /> Dashboard 
+          </li>
+          <li>
+            { dashboardPage ? <span className="flex gap-2"><ChevronRightIcon /> {dashboardPage}</span> : ''}
+          </li>
+        </ol>
+      </nav>
+
+      <div className="flex flex-col sm:flex-row gap-2 mr-5">
           <Card className="flex items-center gap-1 p-2 w-24">
             <Text className="text-xs">IGPM</Text>
             <Metric className="text-xs">
@@ -29,14 +39,11 @@ export function DashboardHeader({dashboardPage, subtitle}: DashboardHeaderProps)
             <Text className="text-xs">IPCA</Text>
             <Metric className="text-xs">
              <Badge color='green'>
-              <Text className="text-xs dark:text-zinc-200">12%</Text>
+              <Text className="text-xs">12%</Text>
               </Badge> 
             </Metric>
           </Card>
         </div>
-      </div>
-      <div className="border border-t-0 border-zinc-400 dark:border-white/10 my-2"></div>
-      <p className="text-zinc-500">{subtitle}</p>
     </div>
   );
 }
