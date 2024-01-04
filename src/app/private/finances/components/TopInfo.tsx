@@ -8,7 +8,7 @@ import { Separator } from "@radix-ui/themes";
 export function TopInfo(){
   return (
   <>
-      <Callout.Root color="green" mt="2" size="1">
+      <Callout.Root color="green" mt="2" size="1" my="5">
         <Callout.Icon>
          <InfoCircledIcon />
         </Callout.Icon>

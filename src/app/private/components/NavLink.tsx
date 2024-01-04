@@ -20,7 +20,7 @@ export default function NavLink({ children, href }: NavLinkProps) {
   return (
     <Link
 		data-active={activeHref === href}
-      className="px-4 py-1 border-l border-zinc-600/40 text-zinc-400 dark:text-zinc-600 border-zinc-600 hover:text-white transition-colors data-[active=true]:border-zinc-200 dark:data-[active=true]:border-indigo-400 data-[active=true]:text-zinc-100 dark:data-[active=true]:text-indigo-400"
+      className="px-4 py-1 border-l border-zinc-600/40 text-zinc-400  border-zinc-600 hover:text-white transition-colors data-[active=true]:border-zinc-200 dark:data-[active=true]:border-indigo-400 data-[active=true]:text-zinc-100 "
       href={href}
     >
       {children}

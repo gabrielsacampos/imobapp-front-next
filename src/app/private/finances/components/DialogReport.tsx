@@ -3,6 +3,7 @@ import { Button, Dialog, Flex, HoverCardContent, HoverCardRoot, HoverCardTrigger
 import { EyeIcon, XIcon, DownloadIcon } from "lucide-react";
 import { Strong, Table, TableBody } from '@radix-ui/themes';
 import React, { ReactNode } from "react";
+
 const mock = [
     {
         property: "Casa de Praia",
@@ -60,7 +61,7 @@ export function DialogReport(){
             
             <Hover>
             <Dialog.Trigger>
-                    <Button variant="soft"><EyeIcon /></Button>
+                    <Button variant="outline"><EyeIcon /></Button>
             </Dialog.Trigger>
             </Hover>
             

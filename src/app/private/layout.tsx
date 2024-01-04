@@ -24,15 +24,15 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider localization={ptBR}>
-    <html lang="en" className={inter.className}>
-      <body className="h-screen  bg-zinc-50">
+    <html lang="en" className={`${inter.className} light-theme`}>
+      <body className="h-screen  bg-zinc-50 ligth">
+      <Theme>
               <Header />
         <main className="flex justify-center pt-16 pl-10">
-            <Theme>
               <Providers>{children}</Providers>
-            </Theme>
         </main>
       
+      </Theme>
       </body>
     </html>
     </ClerkProvider>

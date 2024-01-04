@@ -1,7 +1,5 @@
-import { Card, Table, TableBody, TableCell, TableHead, TableHeaderCell, TableRow, Text, Title } from "@tremor/react";
+import { Tabs, Box, Table, Badge } from "@radix-ui/themes";
 import { DialogReport } from "./DialogReport";
-import { Badge } from "@radix-ui/themes";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 
 
@@ -196,74 +194,77 @@ const mock = [
     },
 ]
 
-export function BadgeStatus({status}: {status: string}){
-    switch (status) {
-        case "pending":
-            return <Badge color="yellow" >Pendente</Badge>
-        case "sucefull":
-            return <Badge color="green" >Emitida</Badge>
-        case "error":
-            return <Badge color="red" highContrast={true} className="animate-pulse"> <InfoCircledIcon/> Falhou</Badge>
-    }
+
+export function Tables(){
+
+
+    return(
+        <div>
+             <h1 className="text-2xl font-semibold text-zinc-500 pl-2">Notas Fiscais consolidadas</h1>
+        <Tabs.Root defaultValue="pending">
+            <Tabs.List>
+                <Tabs.Trigger value="pending">Pendentes <Badge ml='2'>2</Badge></Tabs.Trigger>
+                <Tabs.Trigger value="succes">Enviadas <Badge ml='2' color="green">2</Badge></Tabs.Trigger>
+                <Tabs.Trigger value="error">Falhas <Badge ml='2' color="red" className="animation-pulse">2</Badge></Tabs.Trigger>
+            </ Tabs.List>
+            <Box px="4" pt="3" pb="2">
+                <Tabs.Content value="pending">
+                    <NFSTable />
+                </Tabs.Content>
+            </Box>
+            </ Tabs.Root>
+        </div>
+    )
 }
 
-
-
 export function NFSTable(){
-        return (
-        <Card>
-          <Title className="flex self-center gap-3 text-blue-500">Faturas enviadas</Title>
-          <Table className="mt-5">
-            <TableHead>
-              <TableRow>
-                <TableHeaderCell>Status</TableHeaderCell>
-                <TableHeaderCell>Valor</TableHeaderCell>
-                <TableHeaderCell>Número</TableHeaderCell>
-                <TableHeaderCell>Proprietário</TableHeaderCell>
-                <TableHeaderCell>Locatários</TableHeaderCell>
-                <TableHeaderCell>Repasse</TableHeaderCell>
-                <TableHeaderCell>A Receber</TableHeaderCell>
-                <TableHeaderCell>Faturas</TableHeaderCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {mock.map((item, index) => (
-                <TableRow key={`row-${index}`} className="hover:bg-zinc-200/10 hover:cursor-pointer">
-                  <TableCell>
-                    <BadgeStatus status={item.nfse_status} />
-                    </TableCell>
-                  <TableCell>
-                    <Text>{item.nfse_value}</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>{item.nfse_number}</Text>
-                  </TableCell>
-                  <TableCell>
-                    <Text>{item.owner}</Text>
-                  </TableCell>
-                  <TableCell>
-                  <Text>
-                  {item.tenant_type}
-                  </Text>
-                  </TableCell>
-                  <TableCell>
-                  <Text>
-                  {item.onlending}
-                  </Text>
-                  </TableCell>
-                  <TableCell>
-                  <Text>
-                  {item.recieve}
-                  </Text>
-                  </TableCell>
-                  <TableCell className="flex justify-center">
-                  <Text>
-                    <DialogReport />
-                  </Text>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </Card>)
-        }
+    const data = mock;
+    return(
+        
+                    <Table.Root>
+                        <Table.Header>
+                            <Table.Row>
+                                <Table.RowHeaderCell>Status</Table.RowHeaderCell>   
+                                <Table.RowHeaderCell>Valor</Table.RowHeaderCell>
+                                <Table.RowHeaderCell>Número</Table.RowHeaderCell>
+                                <Table.RowHeaderCell>Proprietário</Table.RowHeaderCell>
+                                <Table.RowHeaderCell>Locatários</Table.RowHeaderCell>
+                                <Table.RowHeaderCell>Repasse</Table.RowHeaderCell>
+                                <Table.RowHeaderCell>A Receber</Table.RowHeaderCell>
+                                <Table.RowHeaderCell>Faturas</Table.RowHeaderCell>
+                            </ Table.Row>
+                        </Table.Header>
+                            <Table.Body>
+                                {data.map((item, index) => (
+                                    <Table.Row key={`row-${index}`} className="hover:bg-zinc-200/10 hover:cursor-pointer">
+                                        <Table.RowHeaderCell>
+                                            {item.nfse_status}
+                                        </Table.RowHeaderCell>
+                                        <Table.Cell>
+                                            {item.nfse_value}
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            {item.nfse_number}
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            {item.owner}
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            {item.tenant_type}
+                        
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            {item.onlending}
+                                        </Table.Cell>
+                                        <Table.Cell>
+                                            {item.recieve}
+                                        </Table.Cell>
+                                        <Table.Cell className="flex justify-center items-center">
+                                            <DialogReport />
+                                        </Table.Cell>
+                                    </Table.Row>
+                                ))}
+                            </Table.Body>
+                    </ Table.Root>
+    )
+}

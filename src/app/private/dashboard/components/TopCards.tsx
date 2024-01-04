@@ -64,12 +64,12 @@ export function TopCards() {
             key={item.lable}
           >
             <header className="flex  flex-col items-start">
-                <div className="dark:text-zinc-400">{item.lable}</div>
-                <div className="dark:text-zinc-500 text-xs italic">{item.desc}</div>
+                <div className="">{item.lable}</div>
+                <div className=" text-xs italic">{item.desc}</div>
             </header>
 
             <div className="item flex h-1/2 items-start justify-start">
-              <p className="text-lg font-semibold dark:text-zinc-300">
+              <p className="text-lg font-semibold">
                 {item.value}
               </p>
             </div>
