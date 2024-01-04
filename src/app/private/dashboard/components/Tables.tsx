@@ -1,205 +1,47 @@
-import { Loader } from "@/app/private/components/Loader";
+import { Badge, Box, Tabs } from "@radix-ui/themes";
+import { TableAvailableProperties } from "./TableAvailableProperties";
+import { TableExpiringLeases } from "./TableExpiringLeases";
 import { useTables } from "@/hooks/useDashboard";
-import { TabList, Tab, TabPanel, TabGroup, Flex } from "@tremor/react";
-import { Building2 as BuildingsIcon, FileOutput as LeaseEndingIcon } from "lucide-react";
-import {
-  Badge,
-  Card,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-  Text,
-  Title,
-} from "@tremor/react";
-import {BadgeCheckIcon, QuestionMarkCircleIcon, ExclamationIcon} from '@heroicons/react/outline'
-import { useState } from "react";
 import { TableSkeleton } from "@/app/components/skeletons/TableSkeleton";
 
 
-function BadgeInfo({ info }: {info: string}) {
-  const styleBadge = () => {
-    if (info === "expiring") {
-      return "border-yellow-500 bg-yellow-500/10 text-yellow-400 w-auto";
+export function Tables(){
+    const {data, isLoading, error} = useTables()
+
+    if(isLoading){
+      return <TableSkeleton />
     }
-    if (info === "expired") {
-      return "border-red-500 bg-red-500/10 text-red-400 animate-pulse w-auto";
-    }
-  };
+    const {available_properties: availableProps, expiring_leases: expiringLeases} = data!;
+    const countAvailableProps = availableProps.length;
+    const countExpiringLeases = expiringLeases.length;
 
-  let infoPt: string;
+    return(
+        <div className="my-16">
+        <p className="
+            text-center text-zinc-500 font-semibold border-b-2 border-black/10 border-double
+            ">Aqui você pode conferir os imóveis disponíveis e os contratos perto
+            do fim.</p>
+        <Tabs.Root my='4' defaultValue="availableProperties">
+            <Tabs.List>
+                <Tabs.Trigger className="flex gap-1" value="availableProperties">
+                    Imóveis Disponíveis 
+                    <Badge ml='1' color="green">{countAvailableProps}</Badge>
+                </Tabs.Trigger>
+                <Tabs.Trigger value="expiringLeases">
+                    Contratos Perto do Fim (- 60 dias)
+                    <Badge ml='1' color="orange">{countExpiringLeases}</Badge>
+                </Tabs.Trigger>
+            </Tabs.List>
 
-  switch (info) {
-    case "expiring":
-      infoPt = "Encerrando";
-      break
-    case "expired":
-      infoPt = "Encerrado";
-      break
-  }
-
-  return (
-    <div className={`px-2 text-xs border  rounded-md ${styleBadge()} `}>
-      {infoPt!}
-    </div>
-  );
-}
-
-
-
-
-export function TableAvailableProperties(){
-  const {data, isLoading, error} = useTables()
-
-  if(isLoading){
-    return <TableSkeleton />
-  }
-
-  const {available_properties: availableProps} = data!;
-  return (
-  <Card>
-    <Title className="flex self-center gap-3">Imóveis Disponíveis <Badge color="emerald" icon={BadgeCheckIcon}>{availableProps.length}</Badge> </Title>
-    <Table className="mt-5">
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Empreendimento</TableHeaderCell>
-          <TableHeaderCell>Unidade</TableHeaderCell>
-          <TableHeaderCell>Torre/Bloco</TableHeaderCell>
-          <TableHeaderCell>Quartos</TableHeaderCell>
-          <TableHeaderCell>Valor Aluguel</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {availableProps.map((item, index) => (
-          <TableRow key={`row-${index}`}>
-            <TableCell>{item.building}</TableCell>
-            <TableCell>
-              <Text>{item.unity}</Text>
-            </TableCell>
-            <TableCell>
-              <Text>{item.block}</Text>
-            </TableCell>
-            <TableCell>
-              <Text>{item.rooms}</Text>
-            </TableCell>
-            <TableCell>
-            <Text>
-            {item.rental_value}
-            </Text>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </Card>)
-}
-  
-export function TableExpiringLeases(){
-  const {data, isLoading, error} = useTables()
-
-  if(isLoading){
-    return <Loader />
-  }
-
-  const {expiring_leases: expiringLeases} = data!;
-
-
-  return (
-  <Card>
-    <Title className="flex self-center gap-3">Contratos perto do fim <Badge color="yellow" icon={ExclamationIcon}>{expiringLeases.length}</Badge> </Title>
-    <Badge size="xs" icon={QuestionMarkCircleIcon} color="gray"> até 60 dias para o fim</Badge>
-    <Table className="mt-5">
-      <TableHead>
-        <TableRow>
-          <TableHeaderCell>Cod.</TableHeaderCell>
-          <TableHeaderCell>Empreendimento</TableHeaderCell>
-          <TableHeaderCell>Unidade</TableHeaderCell>
-          <TableHeaderCell>Bloco/Torre</TableHeaderCell>
-          <TableHeaderCell>Quartos</TableHeaderCell>
-          <TableHeaderCell>Locatário</TableHeaderCell>
-          <TableHeaderCell>Valor Atual</TableHeaderCell>
-          <TableHeaderCell>Status</TableHeaderCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {expiringLeases.map((item, index) => (
-          <TableRow key={`row-${index}`}>
-            <TableCell>{item.code}</TableCell>
-            <TableCell>
-              <Text>{item.building}</Text>
-            </TableCell>
-            <TableCell>
-              <Text>{item.unity}</Text>
-            </TableCell>
-            <TableCell>
-              <Text>{item.block}</Text>
-            </TableCell>
-            <TableCell>
-            <Text>
-            {item.rooms}
-            </Text>
-            </TableCell>
-            <TableCell>
-            <Text>
-            {item.tenant_name}
-            </Text>
-            </TableCell>
-            <TableCell>
-            <Text>
-            {item.lease_value}
-            </Text>
-            </TableCell>
-            <TableCell>
-            <Text>
-              <BadgeInfo info={item.obs} />
-            </Text>
-            </TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </Card>)
-}
-
-export function DashboardTables(){
-  const [selectedTableTab, setSelectedTableTab] = useState(
-    "availableProperties"
-  );
-
-  function handleTabClick(tableRef: string) {
-    setSelectedTableTab(tableRef);
-  }
-
-  function setCurrentTable() {
-    switch (selectedTableTab) {
-      case "availableProperties":
-        return <TableAvailableProperties />;
-      case "leasesToEnd":
-        return <TableExpiringLeases />;
-    }
-  }
-
-  return (
-    <div className="items-center justify-center">
-      <TabGroup className="ml-1">
-        <TabList>
-          <Tab
-            icon={BuildingsIcon}
-            onClick={() => handleTabClick("availableProperties")}
-          >
-            Imóveis Disponíveis
-          </Tab>
-          <Tab 
-            icon={LeaseEndingIcon}
-            onClick={() => handleTabClick("leasesToEnd")}
-          >
-            Contratos perto do fim (60 dias)
-          </Tab>
-        </TabList>
-      </TabGroup>
-      {setCurrentTable()}
-    </div>
-  );
+            <Box px="4" pt="3" pb="2">
+                <Tabs.Content value="availableProperties">
+                    <TableAvailableProperties data={availableProps} />
+                </Tabs.Content>
+                <Tabs.Content value="expiringLeases">
+                    <TableExpiringLeases data={expiringLeases}/>
+                </Tabs.Content>
+            </Box>
+        </Tabs.Root>
+        </div>
+    )
 }

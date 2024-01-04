@@ -61,7 +61,8 @@ interface SideBarProps {
 export function Sidebar({opened}: SideBarProps) {
   
   return (
-    <aside className={`bg-indigo-600 dark:bg-gray-800  drop-shadow-2xl border-r border-white/10 left-0 top-14 bottom-0 w-48 fixed 
+    <div className={`${opened? 'block': 'hidden'}`}>
+<aside className={`bg-indigo-600 dark:bg-gray-800  drop-shadow-2xl border-r border-white/10 left-0 top-14 bottom-0 w-48 fixed 
       ${opened? 'block fixed z-10':' hidden lg:block' }
     `}>
 
@@ -88,5 +89,7 @@ export function Sidebar({opened}: SideBarProps) {
         </nav>
       </div>
     </aside>
-  );
+
+    </div>
+      );
 }

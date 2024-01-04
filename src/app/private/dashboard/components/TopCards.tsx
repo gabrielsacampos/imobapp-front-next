@@ -9,7 +9,7 @@ export function TopCards() {
 
   if (isLoading) {
     return (
-      <div className="flex justify-center gap-4">
+      <div className="flex justify-center gap-4 mt-2">
         <CardSkeleton />
         <CardSkeleton />
         <CardSkeleton />
@@ -59,15 +59,16 @@ export function TopCards() {
       {cards.map((item) => {
         return (
           <Card
+            className="w-[200px]"
             decoration="top" decorationColor="indigo"
             key={item.lable}
           >
-            <header className="flex  flex-col items-center">
+            <header className="flex  flex-col items-start">
                 <div className="dark:text-zinc-400">{item.lable}</div>
                 <div className="dark:text-zinc-500 text-xs italic">{item.desc}</div>
             </header>
 
-            <div className="item flex h-1/2 items-center justify-center">
+            <div className="item flex h-1/2 items-start justify-start">
               <p className="text-lg font-semibold dark:text-zinc-300">
                 {item.value}
               </p>
